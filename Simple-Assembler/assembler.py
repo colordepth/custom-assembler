@@ -16,17 +16,21 @@ import sys
 from components.instructions import *
 from components.shared import *
 from components.preprocess import *
-import components.tools
+from components import tools
 
 
 def parseLine(asm_string):
+	# add R1 R2 R3
 	'''
 	 SPECIAL NOTE:
 	 if instruction == MOV
 	 Use instruction_map["mov"][0] or instruction_map["mov"][1] as appropriate
 	'''
 	bytecode = ''
+	# We have to check the class of instruction and call respective generateCodeTypeX()
+	# Currently only TypeA is supported.
 	bytecode = generateCodeTypeA(asm_string)
+	#
 	return bytecode
 
 def parseCode(source_code):
