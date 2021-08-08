@@ -12,8 +12,18 @@
 
 ########################################
 
+# Exception classes shared across all files
 
-# Generated during runtime
+from .exception import *
+
+
+# Variables Generated during runtime
+
+variables_map = {}
+labels_map = {}
+
+
+# Constants
 
 intro_text = '''
  ~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,12 +35,6 @@ intro_text = '''
  ~~~~~~~~~~~~~~~~~~~~~~~
 
 '''
-
-variables_map = {}
-labels_map = {}
-
-
-# Constants
 
 register_map =						\
 {									\

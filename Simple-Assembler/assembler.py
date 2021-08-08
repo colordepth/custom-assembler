@@ -24,7 +24,9 @@ def parseLine(asm_string):
 	 if instruction == MOV
 	 Use instruction_map["mov"][0] or instruction_map["mov"][1] as appropriate
 	'''
-	pass
+	bytecode = ''
+	# bytecode = generateCodeTypeA(asm_string)
+	return bytecode
 
 def parseCode(source_code):
 	# Returns binary code space for input assembly code
@@ -38,13 +40,10 @@ def parseCode(source_code):
 		try:
 			bytecode += parseLine(asm_string)
 			bytecode += '\n'
-		except Exception as e:
-			# Compile error during 3rd pass
-			print(intro_text)
-			print(f'> Error found in input source code at line {line_number+1}\n> "{asm_string}"\n> {e}\n')
-			print()
-			print("Your code sucks.")
-			#raise
+		except CompileError as e:
+			e.line_number = line_number+1
+			e.code = asm_string
+			raise
 	
 	return bytecode
 
@@ -62,8 +61,11 @@ def main():
 		preprocess(source_code)
 		bytecode = parseCode(source_code)
 		memory_space = generateMemorySpace(source_code)
-	except Exception as e:
-		print(e)
+	except CompileError as e:
+		print(intro_text)
+		print(f'> Error found in input source code at line {e.line_number}\n> "{e.code}"')
+		print(f'> {e.message}\n')
+		print(f'Error caught in procedure "{e.origin}"\n')
 	else:
 		print(bytecode + memory_space)
 

@@ -35,14 +35,14 @@ def validateTypeA(asm_string):
 	_, *operands = asm_string.split()
 
 	if len(operands) != 3:
-		raise Exception(f"Syntax Error: Expected 3 operands, received {len(operands)}")
+		raise CompileError("validateTypeA", f"Syntax Error: Expected 3 operands, received {len(operands)}")
 
 	for register in operands:
 		if register not in register_map:
 			if len(register) and register[0] == 'R':
-				raise Exception(f"Syntax Error: Unknown register '{register.upper()}'")
+				raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
 			else:
-				raise Exception(f"Syntax Error: Unexpected operand '{register.upper()}'")
+				raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}'")
 
 	return
 
