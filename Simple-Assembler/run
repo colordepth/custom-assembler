@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Add command to run your program here
-python assembler.py
+python3 assembler.py
