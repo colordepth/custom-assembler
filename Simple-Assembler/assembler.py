@@ -16,6 +16,7 @@ import sys
 from components.instructions import *
 from components.shared import *
 from components.preprocess import *
+import components.tools
 
 
 def parseLine(asm_string):
@@ -37,6 +38,9 @@ def parseCode(source_code):
 		if asm_string == '':
 			continue
 		instruction, *operands = asm_string.split()
+		if instruction == 'var':
+			continue
+		asm_string = tools.removeLabel(asm_string)
 		try:
 			bytecode += parseLine(asm_string)
 			bytecode += '\n'
@@ -44,7 +48,7 @@ def parseCode(source_code):
 			e.line_number = line_number+1
 			e.code = asm_string
 			raise
-	
+
 	return bytecode
 
 def generateMemorySpace():
