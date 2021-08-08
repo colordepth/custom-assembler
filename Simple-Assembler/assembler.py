@@ -23,7 +23,7 @@ def parseLine(asm_string):
 	# INPUT Example:	"add R1 R2 R3"
 	# OUTPUT Example:	"0000000001010011"
 
-	initializeInstructorCompiler()
+	initializeInstructionCompiler()
 
 	instruction, *operands = asm_string.split()
 	bytecode = None
