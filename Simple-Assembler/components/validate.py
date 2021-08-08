@@ -35,7 +35,7 @@ def validateTypeA(asm_string):
 	_, *operands = asm_string.split()
 
 	if len(operands) != 3:
-		raise Exception(f"Syntax Error: Expected 3 arguments, received {len(operands)}")
+		raise Exception(f"Syntax Error: Expected 3 operands, received {len(operands)}")
 
 	for register in operands:
 		if register not in register_map:
