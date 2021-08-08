@@ -25,7 +25,7 @@ def parseLine(asm_string):
 	 Use instruction_map["mov"][0] or instruction_map["mov"][1] as appropriate
 	'''
 	bytecode = ''
-	# bytecode = generateCodeTypeA(asm_string)
+	bytecode = generateCodeTypeA(asm_string)
 	return bytecode
 
 def parseCode(source_code):
@@ -62,10 +62,12 @@ def main():
 		bytecode = parseCode(source_code)
 		memory_space = generateMemorySpace()
 	except CompileError as e:
+		print("\n\n-------------------- COMPILER REPORT --------------------")
 		print(intro_text)
-		print(f'> Error found in input source code at line {e.line_number}\n> "{e.code}"')
-		print(f'> {e.message}\n')
-		print(f'Error caught in procedure "{e.origin}"\n')
+		print(f'> {e.message}')
+		print(f'> "{e.code}", Line {e.line_number}')
+		# print(f'Error caught in procedure "{e.origin}"')
+		print("\n\n------------------ END COMPILER REPORT ------------------")
 	else:
 		print(bytecode + memory_space)
 

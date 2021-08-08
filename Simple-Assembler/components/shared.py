@@ -26,13 +26,13 @@ labels_map = {}
 # Constants
 
 intro_text = '''
- ~~~~~~~~~~~~~~~~~~~~~~~
-|\t\t\t|
-|\t\t\t|
-| ASSEMBLER CO Group 20 |
-|\t\t\t|
-|\t\t\t|
- ~~~~~~~~~~~~~~~~~~~~~~~
+\t\t ~~~~~~~~~~~~~~~~~~~~~~~
+\t\t|\t\t\t|
+\t\t|\t\t\t|
+\t\t| ASSEMBLER CO Group 20 |
+\t\t|\t\t\t|
+\t\t|\t\t\t|
+\t\t ~~~~~~~~~~~~~~~~~~~~~~~
 
 '''
 
