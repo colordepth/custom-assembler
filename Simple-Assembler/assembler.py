@@ -30,11 +30,11 @@ def parseLine(asm_string):
 
 	if instruction == "mov":
 		if '$' in asm_string:
-			movRegister = code_gen_map['typeA']
-			bytecode = movRegister(asm_string)
-		else:
 			movImmediate = code_gen_map['typeB']
 			bytecode = movImmediate(asm_string)
+		else:
+			movRegister = code_gen_map['typeC']
+			bytecode = movRegister(asm_string)
 		return bytecode
 
 	for instruction_type in types.keys():
