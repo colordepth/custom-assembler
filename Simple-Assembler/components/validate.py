@@ -39,10 +39,10 @@ def validateTypeA(asm_string):
 
 	for register in operands:
 		if register not in register_map:
-			if len(register) and register[0] == 'R':
+			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
 				raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
 			else:
-				raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}'")
+				raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}' for typeA instruction")
 
 	return
 
