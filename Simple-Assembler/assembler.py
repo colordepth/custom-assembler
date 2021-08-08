@@ -20,17 +20,31 @@ from components import tools
 
 
 def parseLine(asm_string):
-	# add R1 R2 R3
-	'''
-	 SPECIAL NOTE:
-	 if instruction == MOV
-	 Use instruction_map["mov"][0] or instruction_map["mov"][1] as appropriate
-	'''
-	bytecode = ''
-	# We have to check the class of instruction and call respective generateCodeTypeX()
-	# Currently only TypeA is supported.
-	bytecode = generateCodeTypeA(asm_string)
-	#
+	# INPUT Example:	"add R1 R2 R3"
+	# OUTPUT Example:	"0000000001010011"
+
+	initializeInstructorCompiler()
+
+	instruction, *operands = asm_string.split()
+	bytecode = None
+
+	if instruction == "mov":
+		if '$' in asm_string:
+			movRegister = code_gen_map['typeA']
+			bytecode = movRegister(asm_string)
+		else:
+			movImmediate = code_gen_map['typeB']
+			bytecode = movImmediate(asm_string)
+		return bytecode
+
+	for instruction_type in types.keys():
+		if instruction in types[instruction_type]:
+			codeGenerator = code_gen_map[instruction_type]
+			bytecode = codeGenerator(asm_string)
+
+	if bytecode == None:
+		raise CompileError("parseLine", f'Syntax error: Invalid instruction "{instruction}"')
+
 	return bytecode
 
 def parseCode(source_code):
