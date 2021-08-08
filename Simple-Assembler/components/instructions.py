@@ -30,16 +30,16 @@ Make a special check for it where apt.
 from .shared import *
 from .validate import *
 
-def initializeInstructorCompiler():
+def initializeInstructionCompiler():
 	# Generate code_gen_map
 	code_gen_map.update(					\
 	{										\
 		"typeA" :	generateCodeTypeA,		\
-		"typeB" :	generateCodeTypeA,		\
-		"typeC" :	generateCodeTypeA,		\
-		"typeD" :	generateCodeTypeA,		\
-		"typeE" :	generateCodeTypeA,		\
-		"typeF" :	generateCodeTypeA,		\
+		"typeB" :	generateCodeTypeB,		\
+		"typeC" :	generateCodeTypeC,		\
+		"typeD" :	generateCodeTypeD,		\
+		"typeE" :	generateCodeTypeE,		\
+		"typeF" :	generateCodeTypeF,		\
 	})
 
 	return
