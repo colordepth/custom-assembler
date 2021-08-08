@@ -30,6 +30,19 @@ Make a special check for it where apt.
 from .shared import *
 from .validate import *
 
+def initializeInstructorCompiler():
+	# Generate code_gen_map
+	code_gen_map.update(					\
+	{										\
+		"typeA" :	generateCodeTypeA,		\
+		"typeB" :	generateCodeTypeA,		\
+		"typeC" :	generateCodeTypeA,		\
+		"typeD" :	generateCodeTypeA,		\
+		"typeE" :	generateCodeTypeA,		\
+		"typeF" :	generateCodeTypeA,		\
+	})
+
+	return
 
 def generateCodeTypeA(asm_string):
 	# INPUT: single line of Type A assembly code
