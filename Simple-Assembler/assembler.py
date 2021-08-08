@@ -12,9 +12,10 @@
 ########################################
 
 import sys
-# from shared import *
+
 from components.instructions import *
 from components.shared import *
+from components.preprocess import *
 
 
 def parseLine(asm_string):
@@ -48,14 +49,17 @@ def parseCode(source_code):
 	return bytecode
 
 def generateMemorySpace(source_code):
-	# Remember to put \n after every 16 bits
-	return ''
+	# Memory is initialized to all 0s
+	zero_string = '0'*16 + '\n'
+
+	return zero_string * len(variables_map)
 
 def main():
 	source_code = sys.stdin.read()
 
 	try:
 		verifySourceCode(source_code)
+		preprocess(source_code)
 		bytecode = parseCode(source_code)
 		memory_space = generateMemorySpace(source_code)
 	except Exception as e:
