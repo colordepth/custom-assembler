@@ -47,7 +47,7 @@ def parseCode(source_code):
 	
 	return bytecode
 
-def generateMemorySpace(source_code):
+def generateMemorySpace():
 	# Memory is initialized to all 0s
 	zero_string = '0'*16 + '\n'
 
@@ -60,7 +60,7 @@ def main():
 		verifySourceCode(source_code)
 		preprocess(source_code)
 		bytecode = parseCode(source_code)
-		memory_space = generateMemorySpace(source_code)
+		memory_space = generateMemorySpace()
 	except CompileError as e:
 		print(intro_text)
 		print(f'> Error found in input source code at line {e.line_number}\n> "{e.code}"')
