@@ -80,7 +80,7 @@ def verifySourceCode(source_code):
 
 		instruction, *operands = asm_string.split()
 
-		if instruction=="hlt" and line_number!=len(source_code.split('\n')):
+		if instruction=="hlt" and line_number!=len(source_code.split('\n')-1):
 			raise CompileError("verifySourceCode","Syntax Error:Illegal use of hlt",line_number+1,asm_string)
 
 		if instruction == 'var':
