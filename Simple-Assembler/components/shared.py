@@ -21,6 +21,7 @@ from .exception import *
 
 variables_map = {}
 labels_map = {}
+code_gen_map = {}
 
 
 # Constants
