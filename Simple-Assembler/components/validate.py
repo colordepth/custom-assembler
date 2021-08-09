@@ -64,9 +64,9 @@ def validateTypeB(asm_string):
 		else:
 			raise CompileError("validateTypeB", f"Syntax Error: Unexpected operand '{register.upper()}' for typeB instruction")
 			
-	if not(immediate.isnumeric()):
-		raise CompileError("validateTypeB", f"Syntax Error: Illegal immediate value'{immediate}'")
-	if immediate>2**8-1:
+	if not(immediate[1:].isnumeric()):
+		raise CompileError("validateTypeB", f"Syntax Error: Invalid immediate value '{immediate}'")
+	if int(immediate[1:])>2**8-1:
 		raise CompileError("validateTypeB", f"Syntax Error: Immediate value greater than allowed value")
 	return
 
