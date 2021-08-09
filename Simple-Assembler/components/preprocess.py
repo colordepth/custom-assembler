@@ -38,8 +38,8 @@ def processLabels(source_code):
 			continue
 		else:
 			label = asm_string[:asm_string.find(':')]
-			label = label.lstrip()                  #possible error if space after label; 
-													#could lead to label mismatch depends on how it is handled elsewhere
+			label = label.lstrip().rstrip()                  
+													
 		if label!="":
 			labels_map[label]=convertToBin(line_number)
 
