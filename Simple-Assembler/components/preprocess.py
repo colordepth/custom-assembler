@@ -19,6 +19,7 @@
 ########################################
 
 from .shared import *
+from .tools import *
 
 def preprocess(source_code):
 
@@ -30,7 +31,18 @@ def preprocess(source_code):
 def processLabels(source_code):
 	# Generates labels -> memory_address mapping such that
 	# labels_map["label name"] = line_number
-	pass
+
+	for line_number,asm_string  in enumerate(source_code.split('\n')):
+		label=""
+		if ':' not in asm_string:
+			continue
+		else:
+			label = asm_string[:asm_string.find(':')]
+			label = label.lstrip()                  #possible error if space after label; 
+													#could lead to label mismatch depends on how it is handled elsewhere
+		if label!="":
+			labels_map[label]=convertToBin(line_number)
+
 
 def processVariables(source_code):
 	# Generates variable -> memory_address mapping such that
