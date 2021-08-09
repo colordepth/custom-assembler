@@ -56,7 +56,7 @@ def validateTypeB(asm_string):
 	register=operands[0]
 	immediate=operands[1]
 
-	if register=="FLAG":
+	if register=="FLAGS":
 		raise CompileError("validateTypeB","Syntax Error: Illegal operation on Flag")
 	if register not in register_map:
 		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
