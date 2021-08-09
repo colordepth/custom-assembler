@@ -73,3 +73,6 @@ def generateCodeTypeD(asm_string):
 
 def generateCodeTypeE(asm_string):
 	pass
+
+def generateCodeTypeF(asm_string):
+	pass
