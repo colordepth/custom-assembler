@@ -64,7 +64,7 @@ def validateTypeB(asm_string):
 			
 	if not(immediate.isnumeric()):
 		raise CompileError("validateTypeB", f"Syntax Error: Illegal immediate value'{immediate}'")
-	if immediate>2**16-1:
+	if immediate>2**8-1:
 		raise CompileError("validateTypeB", f"Syntax Error: Immediate value greater than allowed value")
 	return
 
