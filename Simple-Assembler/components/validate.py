@@ -50,7 +50,27 @@ def validateTypeA(asm_string):
 
 
 def validateTypeB(asm_string):
-	pass
+	_, *operands = asm_string.split()
+
+	if len(operands) != 2:
+		raise CompileError("validateTypeB", f"Syntax Error: Expected 2 operands, received {len(operands)}")
+
+	register=operands[0]
+	immediate=operands[1]
+
+	if register=="FLAGS":
+		raise CompileError("validateTypeB","Syntax Error: Illegal operation on Flag")
+	if register not in register_map:
+		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+			raise CompileError("validateTypeB", f"Syntax Error: Unknown register '{register.upper()}'")
+		else:
+			raise CompileError("validateTypeB", f"Syntax Error: Unexpected operand '{register.upper()}' for typeB instruction")
+			
+	if not(immediate[1:].isnumeric()):
+		raise CompileError("validateTypeB", f"Syntax Error: Invalid immediate value '{immediate}'")
+	if int(immediate[1:])>2**8-1:
+		raise CompileError("validateTypeB", f"Syntax Error: Immediate value greater than allowed value")
+	return
 
 def validateTypeC(asm_string):
 	pass
