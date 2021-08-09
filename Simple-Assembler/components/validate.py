@@ -43,6 +43,8 @@ def validateTypeA(asm_string):
 				raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
 			else:
 				raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}' for typeA instruction")
+		if register == "FLAGS":
+			raise CompileError("validateTypeA", f"Semantic Error: Illegal operation on FLAGS.")
 
 	return
 

@@ -69,12 +69,6 @@ def parseCode(source_code):
 
 	return bytecode
 
-def generateMemorySpace():
-	# Memory is initialized to all 0s
-	zero_string = '0'*16 + '\n'
-
-	return zero_string * len(variables_map)
-
 def main():
 	source_code = sys.stdin.read()
 
@@ -82,7 +76,6 @@ def main():
 		verifySourceCode(source_code)
 		preprocess(source_code)
 		bytecode = parseCode(source_code)
-		memory_space = generateMemorySpace()
 	except CompileError as e:
 		print("\n\n-------------------- COMPILER REPORT --------------------")
 		print(intro_text)
@@ -91,7 +84,7 @@ def main():
 		# print(f'Error caught in procedure "{e.origin}"')
 		print("\n\n------------------ END COMPILER REPORT ------------------")
 	else:
-		print(bytecode + memory_space)
+		print(bytecode)
 
 	return
 
