@@ -54,10 +54,12 @@ def validateTypeC(asm_string):
 	_, *operands = asm_string.split()
 
 	if len(operands) != 2:
-		raise CompileError("validateTypeA", f"Syntax Error: Expected 2 operands, received {len(operands)}")
+		raise CompileError("validateTypeC", f"Syntax Error: Expected 2 operands, received {len(operands)}")
 
 	for register in operands:
 		if register not in register_map:
+			if register=="FLAGS":
+				raise CompileError("validateTypeC","Syntax error: Illegal operation on Flag")
 			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
 				raise CompileError("validateTypeC", f"Syntax Error: Unknown register '{register.upper()}'")
 			else:
