@@ -130,3 +130,6 @@ dmypy.json
 
 # Ignore my input.txt for testing
 input.txt
+
+# Dhruv's File explorer's cache file
+.DS_Store
