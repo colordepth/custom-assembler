@@ -72,4 +72,16 @@ def generateCodeTypeD(asm_string):
 	pass
 
 def generateCodeTypeE(asm_string):
-	pass
+	validateTypeE(asm_string)
+	
+	instruction, *operands = asm_string.split()
+	instruction_binary = instruction_map[instruction]
+
+	unused_bits = "000"
+	memory_address_binary=""
+
+	memory_address=operands
+	memory_address_binary+=variables_map[memory_address]
+
+	bytecode = instruction_binary + unused_bits + memory_address_binary
+	return bytecode
