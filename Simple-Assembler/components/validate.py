@@ -57,7 +57,11 @@ def validateTypeB(asm_string):
 	immediate=operands[1]
 
 	if register not in register_map:
-		raise CompileError("validateTypeB", f"Syntax Error: Unknown register '{register.upper()}'")
+		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+			raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
+		else:
+			raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}' for typeB instruction")
+			
 	if not(immediate.isnumeric()):
 		raise CompileError("validateTypeB", f"Syntax Error: Illegal immediate value'{immediate}'")
 	if immediate>2**16-1:
