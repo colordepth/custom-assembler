@@ -48,7 +48,7 @@ def validateTypeA(asm_string):
 
 
 def validateTypeB(asm_string):
-	_, operands = asm_string.split()
+	_, *operands = asm_string.split()
 
 	if len(operands) != 2:
 		raise CompileError("validateTypeB", f"Syntax Error: Expected 2 operands, received {len(operands)}")
