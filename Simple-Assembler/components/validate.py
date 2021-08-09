@@ -56,11 +56,13 @@ def validateTypeB(asm_string):
 	register=operands[0]
 	immediate=operands[1]
 
+	if register=="FLAG":
+		raise CompileError("validateTypeB","Syntax Error: Illegal operation on Flag")
 	if register not in register_map:
 		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
-			raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
+			raise CompileError("validateTypeB", f"Syntax Error: Unknown register '{register.upper()}'")
 		else:
-			raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}' for typeB instruction")
+			raise CompileError("validateTypeB", f"Syntax Error: Unexpected operand '{register.upper()}' for typeB instruction")
 			
 	if not(immediate.isnumeric()):
 		raise CompileError("validateTypeB", f"Syntax Error: Illegal immediate value'{immediate}'")
