@@ -84,29 +84,4 @@ def verifySourceCode(source_code):
 	# * Variables are only defined in the beginning of file
 	# * Predicted Memory space (variables + compiled code) should not exceed 512 bytes
 	#
-	predicted_memory=0
-	variable_block_flag=0
-
-	for line_number,asm_string  in enumerate(source_code.split('\n')):
-
-		if len(asm_string.split())==0:
-			continue
-
-		instruction, *operands = asm_string.split()
-
-		if instruction=="hlt" and line_number!=len(source_code.split('\n')-1):
-			raise CompileError("verifySourceCode","Syntax Error: Illegal use of hlt",line_number+1,asm_string)
-
-		if instruction == 'var':
-			if variable_block_flag==1:
-				raise CompileError("verifySourceCode","Syntax error: Variable declared after an instruction",line_number+1,asm_string)
-			predicted_memory+=2
-		else:
-			variable_block_flag=1
-			predicted_memory+=2
-		
-	if instruction!="hlt":
-		raise CompileError("verifySourceCode","Syntax error: Hlt is not the last instruction",line_number+1,asm_string)
-	
-	if predicted_memory>512:
-		raise CompileError("verifySourceCode","Compile Error: Memory exceeded available space",line_number+1,asm_string)
+	pass
