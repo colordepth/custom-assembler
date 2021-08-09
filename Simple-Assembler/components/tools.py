@@ -28,3 +28,6 @@ def convertToBin(immediate):
 	# INPUT: 	$5
 	# OUTPUT: 	"00000101"
 	pass
+
+def validateRegisterName(register,type):
+	pass
