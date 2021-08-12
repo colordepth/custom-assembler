@@ -10,6 +10,7 @@
 # Contains small tools or helper functions
 
 ########################################
+from .shared import *
 
 def removeLabel(asm_string):
 	# INPUT: 	"labelName: mov R1 R2 R3"
@@ -30,4 +31,10 @@ def convertToBin(immediate):
 	pass
 
 def validateRegisterName(register,type):
-	pass
+	if register not in register_map:
+		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+			raise CompileError("validateRegisterName", f"Syntax Error: Unknown register '{register.upper()}'")
+		else:
+			raise CompileError("validateRegisterName", f"Syntax Error: Unexpected operand '{register.upper()}' for type"+type+" instruction")
+	if register == "FLAGS":
+		raise CompileError("validateRegisterName", f"Semantic Error: Illegal operation on FLAGS.")
