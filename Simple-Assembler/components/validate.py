@@ -51,15 +51,23 @@ def validateTypeB(asm_string):
 	pass
 
 def validateTypeC(asm_string):
-	_, *operands = asm_string.split()
+	instruction, *operands = asm_string.split()
 
 	if len(operands) != 2:
 		raise CompileError("validateTypeC", f"Syntax Error: Expected 2 operands, received {len(operands)}")
 
+	if "FLAGS" in asm_string:
+		if instruction != "mov":
+			raise CompileError("validateTypeC", f"Syntax Error: Illegal operation on Flags register ")
+		else:
+			register=operands[0]
+			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+				raise CompileError("validateTypeC", f"Syntax Error: Unknown register '{register.upper()}'")
+			else:
+				raise CompileError("validateTypeC", f"Syntax Error: Unexpected operand '{register.upper()}' for typeC instruction")
+
 	for register in operands:
 		if register not in register_map:
-			if register=="FLAGS":
-				raise CompileError("validateTypeC","Syntax error: Illegal operation on Flag")
 			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
 				raise CompileError("validateTypeC", f"Syntax Error: Unknown register '{register.upper()}'")
 			else:
