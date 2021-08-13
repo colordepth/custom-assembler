@@ -25,10 +25,9 @@ def removeLabel(asm_string):
 
 def convertToBin(immediate):
 	# Returns binary representation of immediate
-	# Throw error if immediate is not 8 bit
 	# INPUT: 	$5
 	# OUTPUT: 	"00000101"
-	pass
+	return format(immediate, '08b')
 
 def validateRegisterName(register,type):
 	if register not in register_map:
