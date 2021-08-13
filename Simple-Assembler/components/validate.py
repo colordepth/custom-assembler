@@ -107,8 +107,8 @@ def validateTypeD(asm_string):
 		else:
 			raise CompileError("validateTypeD", f"Syntax Error: Unexpected operand '{register.upper()}' for typeD instruction")
 
-	if memory_address not in labels_map:
-		raise CompileError("validateTypeD", f"Syntax Error: Undefined label reference '{memory_address}'")
+	if memory_address not in variables_map:
+		raise CompileError("validateTypeD", f"Syntax Error: Undefined variable reference '{memory_address}'")
 	
 	return
 
