@@ -104,4 +104,8 @@ def generateCodeTypeE(asm_string):
 
 
 def generateCodeTypeF(asm_string):
-	pass
+	validateTypeF(asm_string)
+
+	instruction=asm_string.lstrip().rstrip()
+	bytecode=instruction_map[instruction]
+	return bytecode
