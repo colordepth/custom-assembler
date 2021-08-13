@@ -46,5 +46,23 @@ def processLabels(source_code):
 
 def processVariables(source_code):
 	# Generates variable -> memory_address mapping such that
-	# variable_map["label name"] = line_number
-	pass
+	# variable_map["label name"] = memory_address
+	
+	spaceless_source_code = []
+	for asm_line in source_code.split("\n"):
+		if asm_line.strip() != '' and asm_line.split()[0] != 'var':
+			spaceless_source_code.append(asm_line)
+	
+	for line_number,asm_string  in enumerate(source_code.split('\n')):
+		if asm_string == '':
+			continue
+		instruction, *operands = asm_string.split()
+		if instruction != "var":
+			return
+		if len(operands) != 1:
+			raise CompileError("processVariables", "Syntax Error = Too many arguements", line_number+1)
+		if operands[0] in variables_map:
+			raise CompileError("processVariables", f'Error = Multiple declarations of variable "{operands[0]}"', line_number+1)
+		
+		variables_map[operands[0]] = len(spaceless_source_code) + len(variables_map)
+		variables_map[operands[0]] = convertToBin(variables_map[operands[0]])
