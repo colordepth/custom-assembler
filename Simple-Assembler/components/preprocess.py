@@ -40,7 +40,7 @@ def processLabels(source_code):
 			label = asm_string[:asm_string.find(':')]
 			label = label.lstrip().rstrip()                  
 													
-		if label!="":
+		if label!="" and asm_string.split()[0]!="" and asm_string.split()[0]!="var":
 			labels_map[label]=convertToBin(line_number)
 
 
