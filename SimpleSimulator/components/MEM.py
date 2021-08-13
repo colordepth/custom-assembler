@@ -1,0 +1,25 @@
+import sys
+from .shared import *
+
+memory=[]
+instruction_length=0
+
+def initialize():
+    global memory
+    memory=[0]*256
+    source_code = sys.stdin.read()
+    source_code=source_code.split("\n")
+    global instruction_length
+    instruction_length=len(source_code)
+    for index,instruction in enumerate(source_code):
+        memory[index]=instruction
+
+def getData(PC):
+    return memory[PC]
+
+def dump():
+    for element in range(0,256):
+        if instruction_length-1<element:
+            print(convertToBinary16(memory[element]))
+        else:
+            print(memory[element])
