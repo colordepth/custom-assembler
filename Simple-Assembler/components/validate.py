@@ -121,12 +121,12 @@ def validateTypeE(asm_string):
 
 	if memory_address not in labels_map:
 		raise CompileError("validateTypeE", f"Syntax Error: Undefined label reference '{memory_address}'")
-		
+
 	return
 
 def validateTypeF(asm_string):
-	if len(asm_string).split() > 1:
-				raise CompileError("validateTypeF", f"Syntax Error: Unexpected operand(s) recieved, {asm_string.split()[1:]}")
+	if len(asm_string.split()) > 1:
+				raise CompileError("validateTypeF", f"Syntax Error: Unexpected input recieved, {asm_string.split()[1:]}")
 
 	pass
 
