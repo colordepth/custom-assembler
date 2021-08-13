@@ -107,7 +107,7 @@ def verifySourceCode(source_code):
 	# * HLT is the last instruction
 	# * Variables are only defined in the beginning of file
 	#
-	
+
 	variable_block_flag=0
 
 	for line_number,asm_string  in enumerate(source_code.split('\n')):
@@ -125,7 +125,6 @@ def verifySourceCode(source_code):
 				raise CompileError("verifySourceCode","Syntax error: Variable declared after an instruction",line_number+1,asm_string)
 		else:
 			variable_block_flag=1
-		print(instruction)
 		
 	if instruction!="hlt":
 		raise CompileError("verifySourceCode","Syntax error: Hlt is not the last instruction",line_number+1,asm_string)
