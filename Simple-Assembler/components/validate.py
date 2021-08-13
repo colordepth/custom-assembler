@@ -114,10 +114,15 @@ def validateTypeD(asm_string):
 
 def validateTypeE(asm_string):
 	_, *operands = asm_string.split()
-	if len(operands) != 2:
-		raise CompileError("validateTypeE", f"Syntax Error: Expected 2 operands, received {len(operands)}")
+	if len(operands) != 1:
+		raise CompileError("validateTypeE", f"Syntax Error: Expected 1 operand, received {len(operands)}")
 
-	pass
+	memory_address = operands[0]
+
+	if memory_address not in labels_map:
+		raise CompileError("validateTypeE", f"Syntax Error: Undefined label reference '{memory_address}'")
+		
+	return
 
 def validateTypeF(asm_string):
 	if len(asm_string).split() > 1:
