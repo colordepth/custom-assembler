@@ -67,6 +67,8 @@ def generateCodeTypeB(asm_string):
 
 	instruction, *operands = asm_string.split()
 	instruction_binary = instruction_map[instruction]
+	if instruction == "mov":
+		instruction_binary = instruction_map[instruction][0]
 
 	unused_bits = ""
 	register_binary = ""
@@ -85,6 +87,9 @@ def generateCodeTypeC(asm_string):
 
 	instruction, *operands = asm_string.split()
 	instruction_binary = instruction_map[instruction]
+
+	if instruction == "mov":
+		instruction_binary = instruction_map[instruction][1]
 	
 	unused_bits = "00000"
 	register_binary = ""
