@@ -142,11 +142,10 @@ def verifySourceCode(source_code):
 	source_code=source_code.rstrip()
 
 	for line_number,asm_string  in enumerate(source_code.split('\n')):
-
-		if len(asm_string.split())==0:
-			continue
-
 		asm_string=removeLabel(asm_string)
+
+		if len(asm_string.strip())==0:
+			continue
 
 		instruction,*_= asm_string.split()
 
