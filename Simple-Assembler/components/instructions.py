@@ -92,11 +92,10 @@ def generateCodeTypeC(asm_string):
 		instruction_binary = instruction_map[instruction][1]
 	
 	unused_bits = "00000"
-	register_binary = ""
 
 	register1 = operands[0]
 	register2 = operands[1]
-	register_binary += register1 + register2
+	register_binary = register_map[register1] + register_map[register2]
 
 	bytecode = instruction_binary + unused_bits + register_binary
 	return bytecode
