@@ -90,13 +90,7 @@ def validateTypeD(asm_string):
 	register = operands[0]
 	memory_address = operands[1]
 
-	if register=="FLAGS":
-		raise CompileError("validateTypeD","Syntax Error: Illegal operation on Flag")
-	if register not in register_map:
-		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
-			raise CompileError("validateTypeD", f"Syntax Error: Unknown register '{register.upper()}'")
-		else:
-			raise CompileError("validateTypeD", f"Syntax Error: Unexpected operand '{register.upper()}' for typeD instruction")
+	validateRegisterName(register, "D")
 
 	if memory_address not in variables_map:
 		raise CompileError("validateTypeD", f"Syntax Error: Undefined variable reference '{memory_address}'")
