@@ -31,17 +31,20 @@ def preprocess(source_code):
 def processLabels(source_code):
 	# Generates labels -> memory_address mapping such that
 	# labels_map["label name"] = line_number
-
-	for line_number,asm_string  in enumerate(source_code.split('\n')):
+	true_ln=0
+	for asm_string  in source_code.split('\n'):
 		label=""
+		if asm_string.split()[0]=="" or asm_string.split()[0]=="var":
+			continue
+		true_ln+=1
 		if ':' not in asm_string:
 			continue
 		else:
 			label = asm_string[:asm_string.find(':')]
 			label = label.lstrip().rstrip()                  
 													
-		if label!="" and asm_string.split()[0]!="" and asm_string.split()[0]!="var":
-			labels_map[label]=convertToBin(line_number)
+		if label!="":
+			labels_map[label]=convertToBin(true_ln)
 
 
 def processVariables(source_code):
