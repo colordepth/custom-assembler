@@ -93,6 +93,8 @@ def validateTypeD(asm_string):
 	validateRegisterName(register, "D")
 
 	if memory_address not in variables_map:
+		if memory_address in labels_map:
+			raise CompileError("validateTypeD", f"Syntax Error: Misuse of label '{memory_address}' as variable.")
 		raise CompileError("validateTypeD", f"Syntax Error: Undefined variable reference '{memory_address}'")
 	
 	return
