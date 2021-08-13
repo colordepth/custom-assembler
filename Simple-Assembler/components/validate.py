@@ -111,7 +111,7 @@ def validateTypeE(asm_string):
 
 def validateTypeF(asm_string):
 	if len(asm_string.split()) > 1:
-				raise CompileError("validateTypeF", f"Syntax Error: Unexpected input recieved, {asm_string.split()[1:]}")
+		raise CompileError("validateTypeF", f"Syntax Error: Unexpected input recieved, {asm_string.split()[1:]}")
 
 	pass
 
