@@ -140,5 +140,6 @@ def generateCodeTypeF(asm_string):
 	validateTypeF(asm_string)
 
 	instruction=asm_string.lstrip().rstrip()
-	bytecode=instruction_map[instruction]
+	unused_bits = "0"*11
+	bytecode=instruction_map[instruction] + unused_bits
 	return bytecode
