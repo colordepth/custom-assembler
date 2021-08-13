@@ -91,16 +91,16 @@ def generateCodeTypeD(asm_string):
 def generateCodeTypeE(asm_string):
 	validateTypeE(asm_string)
 	
-	instruction, *operands = asm_string.split()
+	instruction, operands = asm_string.split()
 	instruction_binary = instruction_map[instruction]
 
 	unused_bits = "000"
-	memory_address_binary=""
 
 	memory_address=operands
-	memory_address_binary+=labels_map[memory_address]
+	memory_address_binary=labels_map[memory_address]
 
 	bytecode = instruction_binary + unused_bits + memory_address_binary
+	return bytecode 
 
 
 def generateCodeTypeF(asm_string):
