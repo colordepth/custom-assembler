@@ -28,7 +28,7 @@ Take care of following errors in their respective functions
 '''
 
 from .shared import *
-
+from .tools import *
 
 def validateTypeA(asm_string):
 
@@ -109,13 +109,16 @@ def verifySourceCode(source_code):
 	#
 
 	variable_block_flag=0
+	source_code=source_code.rstrip()
 
 	for line_number,asm_string  in enumerate(source_code.split('\n')):
 
 		if len(asm_string.split())==0:
 			continue
 
-		instruction, *operands = asm_string.split()
+		asm_string=removeLabel(asm_string)
+
+		instruction,_= asm_string.split()
 
 		if instruction=="hlt" and line_number!=len(source_code.split('\n'))-1:
 			raise CompileError("verifySourceCode","Syntax Error: Illegal use of hlt",line_number+1,asm_string)
@@ -127,5 +130,5 @@ def verifySourceCode(source_code):
 			variable_block_flag=1
 		
 	if instruction!="hlt":
-		raise CompileError("verifySourceCode","Syntax error: Hlt is not the last instruction",line_number+1,asm_string)
+		raise CompileError("verifySourceCode","Syntax error: hlt is not the last instruction",line_number+1,asm_string)
 	
