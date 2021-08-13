@@ -81,7 +81,20 @@ def generateCodeTypeB(asm_string):
 	return bytecode
 
 def generateCodeTypeC(asm_string):
-	pass
+	validateTypeC(asm_string)
+
+	instruction, *operands = asm_string.split()
+	instruction_binary = instruction_map[instruction]
+	
+	unused_bits = "00000"
+	register_binary = ""
+
+	register1 = operands[0]
+	register2 = operands[1]
+	register_binary += register1 + register2
+
+	bytecode = instruction_binary + unused_bits + register_binary
+	return bytecode
 
 def generateCodeTypeD(asm_string):
 	validateTypeD(asm_string)
