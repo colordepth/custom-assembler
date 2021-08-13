@@ -107,6 +107,8 @@ def validateTypeE(asm_string):
 	memory_address = operands[0]
 
 	if memory_address not in labels_map:
+		if memory_address in variables_map:
+			raise CompileError("validateTypeE", f"Syntax Error: Misuse of variable '{memory_address}' as label.")
 		raise CompileError("validateTypeE", f"Syntax Error: Undefined label reference '{memory_address}'")
 
 	return
