@@ -58,7 +58,7 @@ def parseCode(source_code):
 		instruction, *operands = asm_string.split()
 		if instruction == 'var':
 			continue
-		asm_string = tools.removeLabel(asm_string)
+		asm_string = tools.removeLabel(asm_string).strip()
 		try:
 			bytecode += parseLine(asm_string)
 			bytecode += '\n'
