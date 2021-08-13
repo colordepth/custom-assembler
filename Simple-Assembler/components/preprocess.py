@@ -31,8 +31,8 @@ def preprocess(source_code):
 def processLabels(source_code):
 	# Generates labels -> memory_address mapping such that
 	# labels_map["label name"] = line_number
-	true_ln=0
-	for asm_string  in source_code.split('\n'):
+	true_ln=-1
+	for line_number,asm_string  in enumerate(source_code.split('\n')):
 		label=""
 		if asm_string.strip()=="" or asm_string.split()[0]=="var":
 			continue
@@ -43,7 +43,11 @@ def processLabels(source_code):
 			label = asm_string[:asm_string.find(':')]
 			label = label.lstrip().rstrip()                  
 													
-		if label!="":
+		if label=="":
+			raise CompileError("processLabels","Syntax Error: Empty label name",line_number,asm_string)
+		elif label in labels_map.keys():
+			raise CompileError("processLabels","Syntax Error: Label already exists",line_number,asm_string)
+		else:
 			labels_map[label]=convertToBin(true_ln)
 
 
