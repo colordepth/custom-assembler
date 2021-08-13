@@ -34,7 +34,7 @@ def processLabels(source_code):
 	true_ln=0
 	for asm_string  in source_code.split('\n'):
 		label=""
-		if asm_string.split()[0]=="" or asm_string.split()[0]=="var":
+		if asm_string.strip()=="" or asm_string.split()[0]=="var":
 			continue
 		true_ln+=1
 		if ':' not in asm_string:
