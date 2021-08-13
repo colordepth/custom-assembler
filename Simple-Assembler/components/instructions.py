@@ -63,7 +63,22 @@ def generateCodeTypeA(asm_string):
 	return bytecode
 
 def generateCodeTypeB(asm_string):
-	pass
+	validateTypeB(asm_string)
+
+	instruction, *operands = asm_string.split()
+	instruction_binary = instruction_map[instruction]
+
+	unused_bits = ""
+	register_binary = ""
+	immediate_value = ""
+
+	register=operands[0]
+	register_binary += register_map[register]
+
+	immediate_value = convertToBin(operands[1][1:])
+
+	bytecode = instruction_binary + unused_bits + register_binary + immediate_value
+	return bytecode
 
 def generateCodeTypeC(asm_string):
 	pass
