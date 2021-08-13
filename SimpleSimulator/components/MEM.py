@@ -1,4 +1,24 @@
+########################################
+
+# AUTHORS (Group 20):
+
+# Deep Sharma 2020370
+# Dhruv Malik 2020373
+# Karan Singh 2020383
+
+
+# Memory Unit
+
+# initialises memory 
+# fetches instructions 
+# prints memory()
+
+# INPUT: instruction
+# OUTPUT: <function dependent> 
+########################################
+
 import sys
+
 from .shared import *
 
 memory=[]
