@@ -31,7 +31,7 @@ def convertToBin(immediate):
 
 def validateRegisterName(register,type):
 	if register not in register_map:
-		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+		if len(register)>=2 and register[0] == 'R' and register[1].isdigit():
 			raise CompileError("validateRegisterName", f"Syntax Error: Unknown register '{register.upper()}'")
 		else:
 			raise CompileError("validateRegisterName", f"Syntax Error: Unexpected operand '{register.upper()}' for type"+type+" instruction")
