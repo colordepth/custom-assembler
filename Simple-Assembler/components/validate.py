@@ -38,13 +38,7 @@ def validateTypeA(asm_string):
 		raise CompileError("validateTypeA", f"Syntax Error: Expected 3 operands, received {len(operands)}")
 
 	for register in operands:
-		if register not in register_map:
-			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
-				raise CompileError("validateTypeA", f"Syntax Error: Unknown register '{register.upper()}'")
-			else:
-				raise CompileError("validateTypeA", f"Syntax Error: Unexpected operand '{register.upper()}' for typeA instruction")
-		if register == "FLAGS":
-			raise CompileError("validateTypeA", f"Semantic Error: Illegal operation on FLAGS.")
+		validateRegisterName(register)
 
 	return
 
