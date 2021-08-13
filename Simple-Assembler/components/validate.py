@@ -92,12 +92,37 @@ def validateTypeC(asm_string):
 	return
 
 def validateTypeD(asm_string):
-	pass
+	if len(asm_string.split()) != 3:
+		raise CompileError("validateTypeD", f"Syntax Error: Expected 2 operands, received {len(asm_string.split()) - 1}")
+
+	_, *operands = asm_string.split()
+	register = operands[0]
+	memory_address = operands[1]
+
+	if register=="FLAGS":
+		raise CompileError("validateTypeD","Syntax Error: Illegal operation on Flag")
+	if register not in register_map:
+		if len(register)==2 and register[0] == 'R' and register[1].isdigit():
+			raise CompileError("validateTypeD", f"Syntax Error: Unknown register '{register.upper()}'")
+		else:
+			raise CompileError("validateTypeD", f"Syntax Error: Unexpected operand '{register.upper()}' for typeD instruction")
+
+	if memory_address not in labels_map:
+		raise CompileError("validateTypeD", f"Syntax Error: Undefined label reference '{memory_address}'")
+	
+	return
 
 def validateTypeE(asm_string):
+	_, *operands = asm_string.split()
+	if len(operands) != 2:
+		raise CompileError("validateTypeE", f"Syntax Error: Expected 2 operands, received {len(operands)}")
+
 	pass
 
 def validateTypeF(asm_string):
+	if len(asm_string).split() > 1:
+				raise CompileError("validateTypeF", f"Syntax Error: Unexpected operand(s) recieved, {asm_string.split()[1:]}")
+
 	pass
 
 def verifySourceCode(source_code):
