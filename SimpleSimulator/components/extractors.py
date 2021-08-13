@@ -18,7 +18,11 @@
 from .RF import *
 
 def typeAExtract(instruction):
-	return (instruction[7:10],instruction[10:13],instruction[13:16])
+	register1=instruction[7:10]
+	register2=instruction[10:13]
+	register3=instruction[13:16]
+
+	return (register1,register2,register3)
 
 def typeBExtract(instruction):
 	pass
