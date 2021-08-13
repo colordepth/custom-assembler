@@ -55,7 +55,7 @@ def validateTypeB(asm_string):
 	if register=="FLAGS":
 		raise CompileError("validateTypeB","Syntax Error: Illegal operation on Flag")
 	
-	validateRegisterName(register)
+	validateRegisterName(register, "B")
 			
 	if not(immediate[1:].isnumeric()):
 		raise CompileError("validateTypeB", f"Syntax Error: Invalid immediate value '{immediate}'")
