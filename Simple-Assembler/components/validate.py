@@ -38,7 +38,7 @@ def validateTypeA(asm_string):
 		raise CompileError("validateTypeA", f"Syntax Error: Expected 3 operands, received {len(operands)}")
 
 	for register in operands:
-		validateRegisterName(register)
+		validateRegisterName(register, "A")
 
 	return
 
