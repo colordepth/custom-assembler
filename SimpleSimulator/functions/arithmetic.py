@@ -45,11 +45,11 @@ def add(operands):
 
     register_value[operands[0]]=register1
 
-def sub():
+def sub(operands):
     pass
 
-def mul():
+def mul(operands):
     pass
 
-def div():
+def div(operands):
     pass
