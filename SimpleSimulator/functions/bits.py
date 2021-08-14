@@ -27,7 +27,13 @@ def ls(operands):
     pass
 
 def xor(operands):
-    pass
+    destination = operands[0]
+    source_1 = operands[1]
+    source_2 = operands[2]
+
+    result = register_value[source_1] ^ register_value[source_2]
+
+    register_value[destination] = result
 
 def bitwiseOr(operands):
     pass
