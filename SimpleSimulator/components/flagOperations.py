@@ -31,3 +31,17 @@ def setGt():
 
 def setEq():
     pass
+
+def getLt():
+    pass
+
+def getGt():
+    # OUTPUT: Returns G (Greater than) bit (1 or 0)
+
+    extract_overflow = register_value['111'] & (1<<1)
+    overflow_bit = extract_overflow >> 1
+
+    return overflow_bit
+
+def getEq():
+    pass
