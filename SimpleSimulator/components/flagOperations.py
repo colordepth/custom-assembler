@@ -18,7 +18,7 @@
 from components.RF import *
 
 def resetFlag():
-    pass
+    register_value['111']^=register_value['111']
 
 def setOverflow():
     pass
