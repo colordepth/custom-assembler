@@ -21,7 +21,12 @@ from components.RF import *
 from components.flagOperations import *
 
 def rs(operands):
-    pass
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = register_value[source_1] >> convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def ls(operands):
     pass
