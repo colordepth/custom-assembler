@@ -20,21 +20,30 @@
 from components.RF import *
 from components.flagOperations import *
 
-#arithmetic helper
-def checkOverflow(num):
-    return  num>(2**16)-1
-
-#main
 def add(operands):
     resetFlag()
 
     register2=register_value[operands[1]]
     register3=register_value[operands[2]]
-    register1=register2+register3
-    register_value[operands[0]]=register1
 
-    if checkOverflow(register1):
-        setOverflow()
+    register1=0
+    carry=0
+
+    for shift in range(0,16):
+
+        bit2=((1<<shift)&register2)>>shift
+        bit3=((1<<shift)&register3)>>shift
+
+        sum=bit2^bit3
+
+        register1=register1|((sum^carry)<<shift)
+
+        carry=(sum&carry)|(bit2&bit3)
+
+        if shift==15 and carry:
+            setOverflow()
+
+    register_value[operands[0]]=register1
 
 def sub():
     pass

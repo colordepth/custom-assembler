@@ -32,3 +32,4 @@ register_value={         \
 def dump():
     for value in sorted(register_value.keys()):
         print(components.shared.convertToBinary16(register_value[value]),end=" ")
+    print("")
