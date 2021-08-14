@@ -15,7 +15,6 @@ import components.MEM
 import components.EE
 import components.RF
 import components.PC
-import components.shared
 
 components.MEM.initialize()
 

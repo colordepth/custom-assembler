@@ -15,7 +15,5 @@
 # OUTPUT: tuple (True,1) 
 ########################################
 
-import components.shared
-
 def hlt(garbage):
     return (True,1)   
