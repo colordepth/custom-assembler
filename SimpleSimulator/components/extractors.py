@@ -34,7 +34,10 @@ def typeCExtract(instruction):
 	pass
 
 def typeDExtract(instruction):
-	pass
+	register=instruction[5:8]
+	memory=instruction[8:16]
+
+	return (register,memory)
 
 def typeEExtract(instruction):
 	pass
