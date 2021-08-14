@@ -32,7 +32,12 @@ def movr(operands):
     pass
 
 def ld(operands):
-    pass
+    destination = operands[0]
+    memory = operands[1]
+
+    result = getData(memory)
+
+    register_value[destination] = result
 
 def st(operands):
     pass
