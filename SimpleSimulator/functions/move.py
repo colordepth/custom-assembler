@@ -22,9 +22,12 @@ from components.flagOperations import *
 
 def movi(operands):
     pass
+
 def movr(operands):
     pass
+
 def ld(operands):
     pass
+
 def st(operands):
     pass

@@ -29,8 +29,8 @@ functions=                                          \
     "00001" : sub,                                  \
     "00110" : mul,                                  \
     "01010" : xor,                                  \
-    "01011" : UOr,                                  \
-    "01100" : UAnd,                                 \
+    "01011" : bitwiseOr,                            \
+    "01100" : bitwiseAnd,                           \
     "00010" : movi,                                 \
     "01000" : rs,                                   \
     "01001" : ls,                                   \

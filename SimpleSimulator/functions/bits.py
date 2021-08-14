@@ -29,10 +29,10 @@ def ls(operands):
 def xor(operands):
     pass
 
-def UOr(operands):
+def bitwiseOr(operands):
     pass
 
-def UAnd(operands):
+def bitwiseAnd(operands):
     pass
 
 def invert(operands):

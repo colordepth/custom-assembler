@@ -15,6 +15,7 @@
 # OUTPUT: register values
 ########################################
  
+from sys import flags
 import components.shared
 
 register_value={         \
@@ -25,11 +26,9 @@ register_value={         \
     "100" : 0,           \
     "101" : 0,           \
     "110" : 0,           \
-    "111" : "0"*16       \
+    "111" : 0            \
 }
 
 def dump():
     for value in sorted(register_value.keys()):
-        if value!="111":
-            print(components.shared.convertToBinary16(register_value[value]),end=" ")
-    print(register_value[value])
+        print(components.shared.convertToBinary16(register_value[value]),end=" ")

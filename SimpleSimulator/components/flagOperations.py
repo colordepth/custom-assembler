@@ -18,10 +18,10 @@
 from components.RF import *
 
 def resetFlag():
-    register_value["111"]="0"*16
+    pass
 
 def setOverflow():
-    register_value["111"]=register_value["111"][:12]+"1"+register_value["111"][13:]
+    pass
 
 def setLt():
     pass
