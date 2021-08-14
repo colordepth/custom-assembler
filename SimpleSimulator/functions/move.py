@@ -24,7 +24,7 @@ def movi(operands):
     destination = operands[0]
     immediate = operands[1]
 
-    result = convertToDecimal(immediate)
+    result = components.shared.convertToDecimal(immediate)
 
     register_value[destination] = result
 
