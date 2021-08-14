@@ -31,7 +31,14 @@ def jlt(operands):
     pass
 
 def jgt(operands):
-    pass
+    memory = operands[0]
+
+    if getGt() == 1:
+        result = (convertToDecimal(memory), 1)
+    else:
+        result = None
+
+    return result
 
 def jeq(operands):
     pass
