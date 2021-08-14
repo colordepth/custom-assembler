@@ -21,12 +21,17 @@ components.MEM.initialize()
 
 components.PC.PC = 0
 
-components.shared.initialiseHalted()
+halted=False
 
-while not components.shared.halted:
+while not halted:
+
     instruction = components.MEM.getData(components.PC.PC)
-    components.EE.execute(instruction)
+
+    new_PC,halted=components.EE.execute(instruction)
+
     components.PC.dump()
     components.RF.dump()
+
+    components.PC.update(new_PC)
 
 components.MEM.dump()

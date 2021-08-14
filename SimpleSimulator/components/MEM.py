@@ -43,3 +43,11 @@ def dump():
             print(convertToBinary16(memory[element]))
         else:
             print(memory[element])
+
+def store(memory_address,value):
+    index=convertToDecimal(memory_address)
+    memory[index]=value
+
+def load(memory_address):
+    index=convertToDecimal(memory_address)
+    return memory[index]

@@ -16,6 +16,7 @@
 # OUTPUT: NONE 
 ########################################
 
+from components.MEM import *
 from components.RF import *
 from components.flagOperations import *
 

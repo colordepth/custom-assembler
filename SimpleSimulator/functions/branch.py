@@ -13,7 +13,7 @@
 # deal with branching
 
 # INPUT: operands
-# OUTPUT: NONE 
+# OUTPUT: tuple (mem_addr_to_branch_to,0) 
 ########################################
 
 from components.PC import *

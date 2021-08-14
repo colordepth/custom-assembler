@@ -71,10 +71,6 @@ types=                                                      \
     "10011" : typeFExtract                                  \
 }
 
-def initialiseHalted():
-    global halted
-    halted=False
-
 def convertToBinary8(decimal):
     return format(decimal, '08b')
 

@@ -17,14 +17,20 @@
 
 from .shared import *
 import components.PC
+
 def opcodeExtract(instruction):
     return instruction[0:5]
 
 def execute(instruction):
-    update(components.PC.PC+1)
-
     opcode=opcodeExtract(instruction)
     operands=types[opcode](instruction)
     
-    functions[opcode](operands)
+    checkForReturn=functions[opcode](operands)
+
+    if checkForReturn==None:
+        return (components.PC.PC+1,False)
+    elif checkForReturn[1]==1:
+        return (components.PC.PC+1,True)
+    elif checkForReturn[1]==0:
+        return (checkForReturn[0],False)
 

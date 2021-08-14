@@ -12,10 +12,10 @@
 # Halts program execution
 
 # INPUT: operands
-# OUTPUT: NONE 
+# OUTPUT: tuple (True,1) 
 ########################################
 
 import components.shared
 
 def hlt(garbage):
-    components.shared.halted=True    
+    return (True,1)   
