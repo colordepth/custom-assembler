@@ -21,7 +21,12 @@ from components.RF import *
 from components.flagOperations import *
 
 def movi(operands):
-    pass
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def movr(operands):
     pass
