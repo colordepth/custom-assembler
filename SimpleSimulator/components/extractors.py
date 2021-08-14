@@ -25,7 +25,10 @@ def typeAExtract(instruction):
 	return (register1,register2,register3)
 
 def typeBExtract(instruction):
-	pass
+	register=instruction[5:8]
+	immediate=instruction[8:16]
+
+	return (register,immediate)
 
 def typeCExtract(instruction):
 	pass
