@@ -24,7 +24,7 @@ def setOverflow():
     pass
 
 def setLt():
-    pass
+    register_value['111']|=1<<2
 
 def setGt():
     pass
