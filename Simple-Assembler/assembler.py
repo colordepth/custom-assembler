@@ -23,8 +23,6 @@ def parseLine(asm_string):
 	# INPUT Example:	"add R1 R2 R3"
 	# OUTPUT Example:	"0000000001010011"
 
-	initializeInstructionCompiler()
-
 	instruction, *operands = asm_string.split()
 	bytecode = None
 
@@ -50,17 +48,24 @@ def parseLine(asm_string):
 def parseCode(source_code):
 	# Returns binary code space for input assembly code
 
+	initializeInstructionCompiler()
+
 	bytecode = ''
 
-	for line_number,asm_string  in enumerate(source_code.split('\n')):
-		if asm_string == '':
+	for line_number, asm_string in enumerate(source_code.split('\n')):
+
+		clean_asm_string = tools.removeLabel(asm_string).strip()
+
+		if clean_asm_string == '':
 			continue
-		instruction, *operands = asm_string.split()
+
+		instruction, *operands = clean_asm_string.split()
+
 		if instruction == 'var':
 			continue
-		asm_string = tools.removeLabel(asm_string).strip()
+
 		try:
-			bytecode += parseLine(asm_string)
+			bytecode += parseLine(clean_asm_string)
 			bytecode += '\n'
 		except CompileError as e:
 			e.line_number = line_number+1
@@ -82,7 +87,12 @@ def main():
 		print(f'> {e.message}')
 		print(f'> "{e.code}", Line {e.line_number}')
 		# print(f'Error caught in procedure "{e.origin}"')
-		print("\n\n------------------ END COMPILER REPORT ------------------")
+		print("\n\n------------------ END COMPILER REPORT ------------------\n")
+	except Exception as e:
+		print("\n\n-------------------- COMPILER REPORT --------------------")
+		print(intro_text)
+		print("> Compilation Error: Please check source code.")
+		print("\n\n------------------ END COMPILER REPORT ------------------\n")
 	else:
 		print(bytecode)
 

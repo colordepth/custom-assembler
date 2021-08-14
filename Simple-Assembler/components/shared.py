@@ -81,3 +81,5 @@ instruction_map =					\
 	"je"	:	"10010",			\
 	"hlt"	:	"10011",			\
 }
+
+keywords = list(instruction_map.keys()) + list(register_map.keys()) + ["var"]

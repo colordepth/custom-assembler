@@ -51,9 +51,6 @@ def validateTypeB(asm_string):
 
 	register=operands[0]
 	immediate=operands[1]
-
-	if register=="FLAGS":
-		raise CompileError("validateTypeB","Syntax Error: Illegal operation on Flag")
 	
 	validateRegisterName(register, "B")
 			
@@ -111,13 +108,10 @@ def validateTypeE(asm_string):
 			raise CompileError("validateTypeE", f"Syntax Error: Misuse of variable '{memory_address}' as label.")
 		raise CompileError("validateTypeE", f"Syntax Error: Undefined label reference '{memory_address}'")
 
-	return
-
 def validateTypeF(asm_string):
 	if len(asm_string.split()) > 1:
-		raise CompileError("validateTypeF", f"Syntax Error: Unexpected input recieved, {asm_string.split()[1:]}")
+		raise CompileError("validateTypeF", f"Syntax Error: hlt should have 0 operands")
 
-	pass
 
 def verifySourceCode(source_code):
 	# Applies following GLOBAL checks:
@@ -127,19 +121,21 @@ def verifySourceCode(source_code):
 	# * Variables are only defined in the beginning of file
 	#
 
-	variable_block_flag=0
+	variable_block_flag = 0
 	source_code=source_code.rstrip()
 
-	for line_number,asm_string  in enumerate(source_code.split('\n')):
-		asm_string=removeLabel(asm_string)
+	instruction = None
 
-		if len(asm_string.strip())==0:
+	for line_number,asm_string  in enumerate(source_code.split('\n')):
+		asm_string=removeLabel(asm_string).strip()
+
+		if asm_string == '':
 			continue
 
-		instruction,*_= asm_string.split()
+		instruction,*_ = asm_string.split()
 
 		if instruction=="hlt" and line_number!=len(source_code.split('\n'))-1:
-			raise CompileError("verifySourceCode","Syntax Error: Illegal use of hlt",line_number+1,asm_string)
+			raise CompileError("verifySourceCode","Syntax error: hlt is not the last instruction",line_number+1,asm_string)
 
 		if instruction == 'var':
 			if variable_block_flag==1:
@@ -147,6 +143,5 @@ def verifySourceCode(source_code):
 		else:
 			variable_block_flag=1
 		
-	if instruction!="hlt":
+	if instruction != "hlt":
 		raise CompileError("verifySourceCode","Syntax error: hlt is not the last instruction",line_number+1,asm_string)
-	
