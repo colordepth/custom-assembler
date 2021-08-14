@@ -1,0 +1,1 @@
+should PC be incremented when a halt operation is performed?
