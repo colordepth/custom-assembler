@@ -21,7 +21,11 @@ from components.RF import *
 from components.flagOperations import *
 
 def jmp(operands):
-    pass
+    memory = operands[0]
+
+    result = convertToDecimal(memory)
+
+    return (result, 0)
 
 def jlt(operands):
     pass
