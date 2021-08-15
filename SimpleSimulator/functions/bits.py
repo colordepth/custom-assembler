@@ -24,7 +24,7 @@ def rs(operands):
     destination = operands[0]
     immediate = operands[1]
 
-    result = register_value[source_1] >> convertToDecimal(immediate)
+    result = register_value[destination] >> convertToDecimal(immediate)
 
     register_value[destination] = result
 

@@ -11,9 +11,19 @@
 
 # Sets\resets flags as required
 
+# FLAGS:
+# 12 unused bits + VLGE
+# Bit no.          3210
+# 
+# V = Overflow
+# L = Less than
+# G = Greater than
+# E = Equal to
+
 # INPUT: NONE
 # OUTPUT: NONE
 ########################################
+
 
 from components.RF import *
 
@@ -36,12 +46,12 @@ def getLt():
     pass
 
 def getGt():
-    # OUTPUT: Returns G (Greater than) bit (1 or 0)
+    # OUTPUT: Returns G bit (1 or 0)
 
-    extract_overflow = register_value['111'] & (1<<1)
-    overflow_bit = extract_overflow >> 1
+    extract_G = register_value['111'] & (1<<1)
+    G_bit = extract_G >> 1
 
-    return overflow_bit
+    return G_bit
 
 def getEq():
     pass
