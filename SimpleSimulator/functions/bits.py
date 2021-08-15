@@ -21,19 +21,42 @@ from components.RF import *
 from components.flagOperations import *
 
 def rs(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = register_value[destination] >> convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def ls(operands):
     pass
 
 def xor(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    source_1 = operands[1]
+    source_2 = operands[2]
+
+    result = register_value[source_1] ^ register_value[source_2]
+
+    register_value[destination] = result
 
 def bitwiseOr(operands):
     pass
 
 def bitwiseAnd(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    source_1 = operands[1]
+    source_2 = operands[2]
+
+    result = register_value[source_1] & register_value[source_2]
+
+    register_value[destination] = result
 
 def invert(operands):
     pass

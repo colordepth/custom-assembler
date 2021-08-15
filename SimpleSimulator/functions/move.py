@@ -21,13 +21,27 @@ from components.RF import *
 from components.flagOperations import *
 
 def movi(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = components.shared.convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def movr(operands):
     pass
 
 def ld(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    memory = operands[1]
+
+    result = load(memory)
+
+    register_value[destination] = result
 
 def st(operands):
     pass

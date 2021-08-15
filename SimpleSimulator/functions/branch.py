@@ -21,13 +21,27 @@ from components.RF import *
 from components.flagOperations import *
 
 def jmp(operands):
-    pass
+    
+    memory = operands[0]
+
+    result = convertToDecimal(memory)
+
+    resetFlag()
+    return (result, 0)
 
 def jlt(operands):
     pass
 
 def jgt(operands):
-    pass
+    memory = operands[0]
+
+    if getGt() == 1:
+        result = (convertToDecimal(memory), 1)
+    else:
+        result = None
+
+    resetFlag()
+    return result
 
 def jeq(operands):
     pass

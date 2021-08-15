@@ -45,11 +45,38 @@ def add(operands):
 
     register_value[operands[0]]=register1
 
-def sub():
+def sub(operands):
+    def twosComplement(x):
+        # INPUT: 17 bit signed number
+        # OUTPUT: 2s complement of INPUT
+
+        result = (~x + 1) & (2**17-1)
+        return result
+
+    def add(x,y):
+        while y != 0:
+            x,y = x^y, (x&y)<<1
+        return x
+
+    ##################################
+
+    resetFlag()
+
+    destination = operands[0]
+    minuend = register_value[operands[1]]
+    subtrahend = register_value[operands[2]]
+
+    if (minuend < subtrahend):
+        result = 0
+        setOverflow()
+    else:
+        result = add(minuend, twosComplement(subtrahend))
+        result = result & 2**16-1
+
+    register_value[destination] = result
+
+def mul(operands):
     pass
 
-def mul():
-    pass
-
-def div():
+def div(operands):
     pass
