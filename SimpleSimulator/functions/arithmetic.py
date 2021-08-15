@@ -64,6 +64,8 @@ def sub(operands):
     minuend = register_value[operands[1]]
     subtrahend = register_value[operands[2]]
 
+    resetFlag()
+
     if (minuend < subtrahend):
         result = 0
         setOverflow()
