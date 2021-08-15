@@ -21,6 +21,8 @@ from components.RF import *
 from components.flagOperations import *
 
 def movi(operands):
+    resetFlag()
+
     destination = operands[0]
     immediate = operands[1]
 
@@ -32,6 +34,8 @@ def movr(operands):
     pass
 
 def ld(operands):
+    resetFlag()
+
     destination = operands[0]
     memory = operands[1]
 

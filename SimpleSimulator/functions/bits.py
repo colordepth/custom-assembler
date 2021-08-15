@@ -21,6 +21,8 @@ from components.RF import *
 from components.flagOperations import *
 
 def rs(operands):
+    resetFlag()
+
     destination = operands[0]
     immediate = operands[1]
 
@@ -32,6 +34,8 @@ def ls(operands):
     pass
 
 def xor(operands):
+    resetFlag()
+
     destination = operands[0]
     source_1 = operands[1]
     source_2 = operands[2]
@@ -44,6 +48,8 @@ def bitwiseOr(operands):
     pass
 
 def bitwiseAnd(operands):
+    resetFlag()
+
     destination = operands[0]
     source_1 = operands[1]
     source_2 = operands[2]

@@ -21,10 +21,12 @@ from components.RF import *
 from components.flagOperations import *
 
 def jmp(operands):
+    
     memory = operands[0]
 
     result = convertToDecimal(memory)
 
+    resetFlag()
     return (result, 0)
 
 def jlt(operands):
@@ -38,6 +40,7 @@ def jgt(operands):
     else:
         result = None
 
+    resetFlag()
     return result
 
 def jeq(operands):
