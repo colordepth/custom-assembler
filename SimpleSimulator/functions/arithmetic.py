@@ -46,19 +46,24 @@ def add(operands):
     register_value[operands[0]]=register1
 
 def sub(operands):
-    def twosComplement(x):
-        # INPUT: 17 bit signed number
-        # OUTPUT: 2s complement of INPUT
+    # ============================
+    # Helper functions
+    # ============================
 
-        result = (~x + 1) & (2**17-1)
+    def twosComplement(x):
+        # INPUT: 16-bit number
+        # OUTPUT: 16-bit number
+        result = add((~x) & 65535, 1)
         return result
 
     def add(x,y):
+        # INPUT: 16-bit number
+        # OUTPUT: 16-bit number
         while y != 0:
             x,y = x^y, (x&y)<<1
-        return x
+        return x & 65535
 
-    ##################################
+    # ============================
 
     resetFlag()
 
@@ -71,7 +76,6 @@ def sub(operands):
         setOverflow()
     else:
         result = add(minuend, twosComplement(subtrahend))
-        result = result & 2**16-1
 
     register_value[destination] = result
 
@@ -79,4 +83,40 @@ def mul(operands):
     pass
 
 def div(operands):
-    pass
+    # ============================
+    # Helper functions
+    # ============================
+
+    def twosComplement(x):
+        # INPUT: 16-bit number
+        # OUTPUT: 16-bit number
+        result = add((~x) & 65535, 1)
+        return result
+
+    def add(x,y):
+        # INPUT: 16-bit number
+        # OUTPUT: 16-bit number
+        while y != 0:
+            x,y = x^y, (x&y)<<1
+        return x & 65535
+
+    # ============================
+
+    resetFlag()
+
+    dividend, divisor = map(register_value.get, operands)
+    nBits = 16
+    
+    shifted_divisor = divisor << nBits
+    quotient = 0
+    remainder = dividend
+
+    while remainder >= divisor:
+        while shifted_divisor > remainder:
+            shifted_divisor >>= 1
+            nBits = add(nBits, twosComplement(1))
+        quotient = add(quotient, 1 << nBits)
+        remainder = add(remainder, twosComplement(shifted_divisor))
+
+    register_value['000'] = quotient
+    register_value['001'] = remainder
