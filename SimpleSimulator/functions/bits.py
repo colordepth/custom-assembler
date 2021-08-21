@@ -74,7 +74,14 @@ def bitwiseAnd(operands):
     register_value[destination] = result
 
 def invert(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    source = operands[1]
+
+    result = ~(register_value[source])
+
+    register_value[destination] = result
 
 def comp(operands):
     pass
