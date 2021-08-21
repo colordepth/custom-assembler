@@ -84,4 +84,14 @@ def invert(operands):
     register_value[destination] = result
 
 def comp(operands):
-    pass
+    resetFlag()
+
+    operand_1 = operands[0]
+    operand_2 = operands[1]
+
+    if operand_1 == operand_2:
+        setEq()
+    elif operand_1 < operand_2:
+        setLt()
+    else:
+        setGt()
