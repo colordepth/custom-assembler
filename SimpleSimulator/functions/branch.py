@@ -52,4 +52,12 @@ def jgt(operands):
     return result
 
 def jeq(operands):
-    pass
+    memory = operands[0]
+
+    if getEq() == 1:
+        result = (convertToDecimal(memory), 0)
+    else:
+        result = None
+
+    resetFlag()
+    return result
