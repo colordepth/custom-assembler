@@ -43,7 +43,12 @@ def setEq():
     register_value['111']=1
 
 def getLt():
-    pass
+    # OUTPUT: Returns L bit (1 or 0)
+
+    extract_L = register_value['111'] & (1<<2)
+    L_bit = extract_L >> 2
+
+    return L_bit
 
 def getGt():
     # OUTPUT: Returns G bit (1 or 0)
