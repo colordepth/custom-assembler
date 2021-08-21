@@ -44,4 +44,10 @@ def ld(operands):
     register_value[destination] = result
 
 def st(operands):
-    pass
+    resetFlag()
+
+    source = operands[0]
+    destination = operands[1]
+    
+    global memory
+    memory[destination] = int(source)
