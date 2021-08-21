@@ -59,4 +59,8 @@ def getGt():
     return G_bit
 
 def getEq():
-    pass
+        # OUTPUT: Returns E bit (1 or 0)
+
+    E_bit = register_value['111'] & 1
+    
+    return E_bit
