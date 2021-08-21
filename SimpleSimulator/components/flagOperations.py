@@ -31,7 +31,7 @@ def resetFlag():
     register_value['111']^=register_value['111']
 
 def setOverflow():
-    pass
+    register_value['111']|=1<<3
 
 def setLt():
     register_value['111']|=1<<2
@@ -40,7 +40,7 @@ def setGt():
     register_value['111']|=1<<1
 
 def setEq():
-    pass
+    register_value['111']=1
 
 def getLt():
     pass
