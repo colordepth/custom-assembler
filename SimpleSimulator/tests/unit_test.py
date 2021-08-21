@@ -39,7 +39,7 @@ class TestArithmetic(unittest.TestCase):
         mul(("100", "010","011"))
 
         # Division result
-        self.assertEqual(register_value['100'], (multiplicand1*multiplicand2)%65535)
+        self.assertEqual(register_value['100'], (multiplicand1*multiplicand2)%65536)
 
         # Flags check
         if multiplicand1*multiplicand2 > 2**16-1:
@@ -54,7 +54,7 @@ class TestArithmetic(unittest.TestCase):
         add(("100", "010","011"))
 
         # Division result
-        self.assertEqual(register_value['100'], (summand1 + summand2)%65535)
+        self.assertEqual(register_value['100'], (summand1 + summand2)%65536)
 
         # Flags check
         if summand1 + summand2 > 2**16-1:
