@@ -31,7 +31,12 @@ def movi(operands):
     register_value[destination] = result
 
 def movr(operands):
-    pass
+    resetFlag()
+
+    source = operands[1]
+    destination = operands[0]
+
+    register_value[destination] = register_value[source]
 
 def ld(operands):
     resetFlag()
