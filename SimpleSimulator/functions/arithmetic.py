@@ -84,27 +84,28 @@ def mul(operands):
     # Helper functions
     # ============================
     def add(x,y):
-        # INPUT: 16-bit number
-        # OUTPUT: 16-bit number
         while y != 0:
             x,y = x^y, (x&y)<<1
-        return x & 65535
+        return x
     # ============================
 
     resetFlag()
 
-    l, m, n = map(register_value.get, operands)
+    _, multiplicand1, multiplicand2 = map(register_value.get, operands)
     bitshifter = 0
     result = 0
 
     while(bitshifter < 16):
-        x = (n & (1 << bitshifter))
+        x = (multiplicand2 & (1 << bitshifter))
         if x >> bitshifter:
-            result = add(result, m << bitshifter)
+            result = add(result, multiplicand1 << bitshifter)
+        bitshifter += 1
 
-    #accomodate overflow during peer review
+    if result > 65535:
+        setOverflow()
+        result &= 65535
 
-    register_value[l] = result
+    register_value[operands[0]] = result
 
 def div(operands):
     # ============================
