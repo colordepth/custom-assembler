@@ -37,7 +37,7 @@ def setLt():
     register_value['111']|=1<<2
 
 def setGt():
-    pass
+    register_value['111']|=1<<1
 
 def setEq():
     pass
