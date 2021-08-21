@@ -80,7 +80,31 @@ def sub(operands):
     register_value[destination] = result
 
 def mul(operands):
-    pass
+    # ============================
+    # Helper functions
+    # ============================
+    def add(x,y):
+        # INPUT: 16-bit number
+        # OUTPUT: 16-bit number
+        while y != 0:
+            x,y = x^y, (x&y)<<1
+        return x & 65535
+    # ============================
+
+    resetFlag()
+
+    l, m, n = map(register_value.get, operands)
+    bitshifter = 0
+    result = 0
+
+    while(bitshifter < 16):
+        x = (n & (1 << bitshifter))
+        if x >> bitshifter:
+            result = add(result, m << bitshifter)
+
+    #accomodate overflow during peer review
+
+    register_value[l] = result
 
 def div(operands):
     # ============================
