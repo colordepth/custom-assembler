@@ -31,7 +31,14 @@ def rs(operands):
     register_value[destination] = result
 
 def ls(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = register_value[destination] << convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def xor(operands):
     resetFlag()
