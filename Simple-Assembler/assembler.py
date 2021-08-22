@@ -94,7 +94,7 @@ def main():
 		print("> Compilation Error: Please check source code.")
 		print("\n\n------------------ END COMPILER REPORT ------------------\n")
 	else:
-		print(bytecode)
+		print(bytecode.strip('\n'), end='')
 
 	return
 
