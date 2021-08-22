@@ -38,7 +38,7 @@ def ls(operands):
 
     result = register_value[destination] << components.shared.convertToDecimal(immediate)
 
-    register_value[destination] = result
+    register_value[destination] = result & 65535
 
 def xor(operands):
     resetFlag()
