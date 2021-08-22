@@ -16,7 +16,7 @@
 # INPUT: operands
 # OUTPUT: NONE 
 ########################################
-
+from components.shared import *
 from components.RF import *
 from components.flagOperations import *
 
@@ -26,7 +26,7 @@ def rs(operands):
     destination = operands[0]
     immediate = operands[1]
 
-    result = register_value[destination] >> convertToDecimal(immediate)
+    result = register_value[destination] >> components.shared.convertToDecimal(immediate)
 
     register_value[destination] = result
 
@@ -36,7 +36,7 @@ def ls(operands):
     destination = operands[0]
     immediate = operands[1]
 
-    result = register_value[destination] << convertToDecimal(immediate)
+    result = register_value[destination] << components.shared.convertToDecimal(immediate)
 
     register_value[destination] = result
 

@@ -27,7 +27,7 @@ instruction_length=0
 def initialize():
     global memory
     memory=[0]*256
-    source_code = sys.stdin.read()
+    source_code = sys.stdin.read().strip()
     source_code=source_code.split("\n")
     global instruction_length
     instruction_length=len(source_code)

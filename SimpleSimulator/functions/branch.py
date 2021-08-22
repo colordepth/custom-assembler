@@ -15,7 +15,7 @@
 # INPUT: operands
 # OUTPUT: tuple (mem_addr_to_branch_to,0) 
 ########################################
-
+from components.shared import *
 from components.PC import *
 from components.RF import *
 from components.flagOperations import *
@@ -24,7 +24,7 @@ def jmp(operands):
     
     memory = operands[0]
 
-    result = convertToDecimal(memory)
+    result = components.shared.convertToDecimal(memory)
 
     resetFlag()
     return (result, 0)
@@ -33,7 +33,7 @@ def jlt(operands):
     memory = operands[0]
 
     if getLt() == 1:
-        result = (convertToDecimal(memory), 0)
+        result = (components.shared.convertToDecimal(memory), 0)
     else:
         result = None
 
@@ -44,7 +44,7 @@ def jgt(operands):
     memory = operands[0]
 
     if getGt() == 1:
-        result = (convertToDecimal(memory), 0)
+        result = (components.shared.convertToDecimal(memory), 0)
     else:
         result = None
 
@@ -55,7 +55,7 @@ def jeq(operands):
     memory = operands[0]
 
     if getEq() == 1:
-        result = (convertToDecimal(memory), 0)
+        result = (components.shared.convertToDecimal(memory), 0)
     else:
         result = None
 
