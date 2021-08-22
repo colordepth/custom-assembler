@@ -54,4 +54,4 @@ def st(operands):
     source = operands[0]
     destination = operands[1]
     
-    store(destination, register_value[source])
+    components.MEM.store(destination, register_value[source])
