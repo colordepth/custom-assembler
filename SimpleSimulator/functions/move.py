@@ -54,5 +54,4 @@ def st(operands):
     source = operands[0]
     destination = operands[1]
     
-    global memory
-    memory[destination] = int(source)
+    store(destination, register_value[source])
