@@ -79,7 +79,7 @@ def invert(operands):
     destination = operands[0]
     source = operands[1]
 
-    result = ~(register_value[source])
+    result = ~(register_value[source]) & 65535
 
     register_value[destination] = result
 
