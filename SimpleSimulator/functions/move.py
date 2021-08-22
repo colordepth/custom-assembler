@@ -39,7 +39,7 @@ def ld(operands):
     destination = operands[0]
     memory = operands[1]
 
-    result = load(memory)
+    result = components.MEM.load(memory)
 
     register_value[destination] = result
 
