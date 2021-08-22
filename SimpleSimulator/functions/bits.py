@@ -89,9 +89,9 @@ def comp(operands):
     operand_1 = operands[0]
     operand_2 = operands[1]
 
-    if operand_1 == operand_2:
+    if register_value[operand_1] == register_value[operand_2]:
         setEq()
-    elif operand_1 < operand_2:
+    elif register_value[operand_1] < register_value[operand_2]:
         setLt()
     else:
         setGt()
