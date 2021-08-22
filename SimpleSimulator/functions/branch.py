@@ -44,7 +44,7 @@ def jgt(operands):
     memory = operands[0]
 
     if getGt() == 1:
-        result = (convertToDecimal(memory), 1)
+        result = (convertToDecimal(memory), 0)
     else:
         result = None
 
