@@ -31,19 +31,24 @@ def resetFlag():
     register_value['111']^=register_value['111']
 
 def setOverflow():
-    pass
+    register_value['111']|=1<<3
 
 def setLt():
     register_value['111']|=1<<2
 
 def setGt():
-    pass
+    register_value['111']|=1<<1
 
 def setEq():
-    pass
+    register_value['111']=1
 
 def getLt():
-    pass
+    # OUTPUT: Returns L bit (1 or 0)
+
+    extract_L = register_value['111'] & (1<<2)
+    L_bit = extract_L >> 2
+
+    return L_bit
 
 def getGt():
     # OUTPUT: Returns G bit (1 or 0)
@@ -54,4 +59,8 @@ def getGt():
     return G_bit
 
 def getEq():
-    pass
+        # OUTPUT: Returns E bit (1 or 0)
+
+    E_bit = register_value['111'] & 1
+    
+    return E_bit

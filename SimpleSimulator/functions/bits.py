@@ -31,7 +31,14 @@ def rs(operands):
     register_value[destination] = result
 
 def ls(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    immediate = operands[1]
+
+    result = register_value[destination] << convertToDecimal(immediate)
+
+    register_value[destination] = result
 
 def xor(operands):
     resetFlag()
@@ -45,7 +52,15 @@ def xor(operands):
     register_value[destination] = result
 
 def bitwiseOr(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    source_1 = operands[1]
+    source_2 = operands[2]
+
+    result = register_value[source_1] | register_value[source_2]
+
+    register_value[destination] = result
 
 def bitwiseAnd(operands):
     resetFlag()
@@ -59,7 +74,24 @@ def bitwiseAnd(operands):
     register_value[destination] = result
 
 def invert(operands):
-    pass
+    resetFlag()
+
+    destination = operands[0]
+    source = operands[1]
+
+    result = ~(register_value[source]) & 65535
+
+    register_value[destination] = result
 
 def comp(operands):
-    pass
+    resetFlag()
+
+    operand_1 = operands[0]
+    operand_2 = operands[1]
+
+    if register_value[operand_1] == register_value[operand_2]:
+        setEq()
+    elif register_value[operand_1] < register_value[operand_2]:
+        setLt()
+    else:
+        setGt()

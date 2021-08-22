@@ -30,13 +30,21 @@ def jmp(operands):
     return (result, 0)
 
 def jlt(operands):
-    pass
+    memory = operands[0]
+
+    if getLt() == 1:
+        result = (convertToDecimal(memory), 0)
+    else:
+        result = None
+
+    resetFlag()
+    return result
 
 def jgt(operands):
     memory = operands[0]
 
     if getGt() == 1:
-        result = (convertToDecimal(memory), 1)
+        result = (convertToDecimal(memory), 0)
     else:
         result = None
 
@@ -44,4 +52,12 @@ def jgt(operands):
     return result
 
 def jeq(operands):
-    pass
+    memory = operands[0]
+
+    if getEq() == 1:
+        result = (convertToDecimal(memory), 0)
+    else:
+        result = None
+
+    resetFlag()
+    return result
