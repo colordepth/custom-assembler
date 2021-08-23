@@ -45,7 +45,7 @@ def typeDExtract(instruction):
 def typeEExtract(instruction):
 	memory=instruction[8:16]
 
-	return memory
+	return (memory,)
 
 def typeFExtract(instruction):
 	return "placeholder to maintain same syntax"
