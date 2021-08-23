@@ -40,14 +40,14 @@ def getData(PC):
 def dump():
     for element in range(0,256):
         if instruction_length-1<element:
-            print(convertToBinary16(memory[element]))
+            print(components.shared.convertToBinary16(memory[element]))
         else:
             print(memory[element])
 
 def store(memory_address,value):
-    index=convertToDecimal(memory_address)
+    index=components.shared.convertToDecimal(memory_address)
     memory[index]=value
 
 def load(memory_address):
-    index=convertToDecimal(memory_address)
+    index=components.shared.convertToDecimal(memory_address)
     return memory[index]

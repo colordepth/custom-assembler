@@ -19,6 +19,7 @@
 from components.MEM import *
 from components.RF import *
 from components.flagOperations import *
+from components.CC import *
 
 def movi(operands):
     resetFlag()
@@ -44,6 +45,8 @@ def ld(operands):
     destination = operands[0]
     memory = operands[1]
 
+    components.CC.trackMemory(components.shared.convertToDecimal(memory))
+
     result = components.MEM.load(memory)
 
     register_value[destination] = result
@@ -54,4 +57,6 @@ def st(operands):
     source = operands[0]
     destination = operands[1]
     
+    components.CC.trackMemory(components.shared.convertToDecimal(destination))
+
     components.MEM.store(destination, register_value[source])

@@ -11,10 +11,12 @@
 
 ########################################
 
+from components.PC import PC
 import components.MEM
 import components.EE
 import components.RF
 import components.PC
+import components.CC
 
 components.MEM.initialize()
 
@@ -25,7 +27,7 @@ halted=False
 while not halted:
 
     instruction = components.MEM.getData(components.PC.PC)
-
+    components.CC.trackMemory(components.PC.PC)
     new_PC,halted=components.EE.execute(instruction)
 
     components.PC.dump()
@@ -34,3 +36,5 @@ while not halted:
     components.PC.update(new_PC)
 
 components.MEM.dump()
+
+components.CC.trackerGraph()
