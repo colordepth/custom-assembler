@@ -28,10 +28,10 @@ while not halted:
 
     instruction = components.MEM.getData(components.PC.PC)
 
+    new_PC,halted=components.EE.execute(instruction)
+
     components.CC.trackMemory(components.PC.PC)
     components.CC.cyclecounter += 1
-
-    new_PC,halted=components.EE.execute(instruction)
 
     components.PC.dump()
     components.RF.dump()
