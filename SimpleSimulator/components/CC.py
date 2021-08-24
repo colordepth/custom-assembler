@@ -25,8 +25,8 @@ cycle_number = []
 memory_tracker = []
 
 def trackMemory(mem_address):
-    x.append(cycle_number)
-    y.append(mem_address)
+    cycle_number.append(cycle_number)
+    memory_tracker.append(mem_address)
 
 def trackerGraph():
 
