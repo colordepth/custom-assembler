@@ -131,6 +131,9 @@ dmypy.json
 # Ignore my input.txt for testing
 input.txt
 tmp.txt
+a.out
 
 # Dhruv's File explorer's cache file
 .DS_Store
+*.png
+
