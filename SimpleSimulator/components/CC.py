@@ -36,5 +36,9 @@ def trackerGraph():
     fig = plt.figure()
     plt.scatter(x, y)
 
+    plt.xlabel("Cycle")
+    plt.ylabel("Memory Address")
+    plt.title("Memory Trace")
+
     png_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.%f.png")
     fig.savefig(png_name)
