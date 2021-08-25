@@ -15,5 +15,7 @@
 # OUTPUT: tuple (True,1) 
 ########################################
 
+from components.flagOperations import *
 def hlt(garbage):
+    resetFlag()
     return (True,1)   
