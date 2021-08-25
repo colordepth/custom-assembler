@@ -82,7 +82,7 @@ def processVariables(source_code):
 			return
 		
 		if len(operands) == 0:
-			CompileError("processVariables", "Syntax Error: blank name for variable", line_number+1, asm_string)
+			raise CompileError("processVariables", "Syntax Error: blank name for variable", line_number+1, asm_string)
 
 		if len(operands) > 1:
 			raise CompileError("processVariables", "Syntax Error: Cannot declare multiple variables in one line", line_number+1, asm_string)
