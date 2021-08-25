@@ -18,23 +18,20 @@
 ########################################
 
 import matplotlib.pyplot as plt
-import numpy as np
 from datetime import datetime
 
-memory_access_tracker = []
+cyclecounter = 0
+cycle_number = []
+memory_tracker = []
 
 def trackMemory(mem_address):
-    memory_access_tracker.append(mem_address)
+    cycle_number.append(cyclecounter)
+    memory_tracker.append(mem_address)
 
 def trackerGraph():
-    x = np.array(range(len(memory_access_tracker)))
-    y = np.array(memory_access_tracker)
-
-    plt.yticks(range(len(y)))
-    plt.xticks(range(len(x)))
 
     fig = plt.figure()
-    plt.scatter(x, y)
+    plt.scatter(cycle_number, memory_tracker)
 
     plt.xlabel("Cycle")
     plt.ylabel("Memory Address")
