@@ -81,18 +81,17 @@ def main():
 		verifySourceCode(source_code)
 		preprocess(source_code)
 		bytecode = parseCode(source_code)
-	except CompileError as e:
-		print("\n\n-------------------- COMPILER REPORT --------------------")
-		print(intro_text)
-		print(f'> {e.message}')
-		print(f'> "{e.code}", Line {e.line_number}')
-		# print(f'Error caught in procedure "{e.origin}"')
-		print("\n\n------------------ END COMPILER REPORT ------------------\n")
 	except Exception as e:
-		print("\n\n-------------------- COMPILER REPORT --------------------")
-		print(intro_text)
-		print("> Compilation Error: Please check source code.")
-		print("\n\n------------------ END COMPILER REPORT ------------------\n")
+		print("\n-------------------- COMPILER REPORT --------------------\n")
+		#print(intro_text)
+		if type(e) == CompileError:
+			print(f'> {e.message}')
+			print(f'> "{e.code}", Line {e.line_number}')
+		else:
+			print("> Compilation Error: Please check source code.")
+		# print(f'Error caught in procedure "{e.origin}"')
+		print("\n------------------ END COMPILER REPORT ------------------\n")
+		exit(1)
 	else:
 		print(bytecode.strip('\n'), end='')
 
