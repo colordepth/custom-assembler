@@ -128,12 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore my input.txt for testing
+# Ignore deep's files for testing
 input.txt
-tmp.txt
-a.out
+cleanup
+pipe
 
 # Dhruv's File explorer's cache file
 .DS_Store
 *.png
-
