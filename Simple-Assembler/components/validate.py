@@ -73,9 +73,9 @@ def validateTypeC(asm_string):
 	for register in operands:
 		if register not in register_map:
 			if len(register)==2 and register[0] == 'R' and register[1].isdigit():
-				raise CompileError("validateTypeC", f"Syntax Error: Unknown register '{register.upper()}'")
+				raise CompileError("validateTypeC", f"Syntax Error: Unknown register '{register}'")
 			else:
-				raise CompileError("validateTypeC", f"Syntax Error: Unexpected operand '{register.upper()}' for typeC instruction")
+				raise CompileError("validateTypeC", f"Syntax Error: Unexpected operand '{register}' for typeC instruction")
 
 	return
 

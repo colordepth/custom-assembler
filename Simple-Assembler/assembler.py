@@ -82,7 +82,7 @@ def main():
 		preprocess(source_code)
 		bytecode = parseCode(source_code)
 	except Exception as e:
-		print("\n-------------------- COMPILER REPORT --------------------\n")
+		print("\n~~~~~~~~~~~~~~~~~~~~ ASSEMBLER REPORT ~~~~~~~~~~~~~~~~~~~~\n")
 		#print(intro_text)
 		if type(e) == CompileError:
 			print(f'> {e.message}')
@@ -90,7 +90,7 @@ def main():
 		else:
 			print("> Compilation Error: Please check source code.")
 		# print(f'Error caught in procedure "{e.origin}"')
-		print("\n------------------ END COMPILER REPORT ------------------\n")
+		print("\n~~~~~~~~~~~~~~~~~~ END ASSEMBLER REPORT ~~~~~~~~~~~~~~~~~~\n")
 		exit(1)
 	else:
 		print(bytecode.strip('\n'), end='')
