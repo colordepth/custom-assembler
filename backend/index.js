@@ -33,6 +33,7 @@ app.post('/api/assembler', (req, res) => {
 	assembler.stderr.on('data', (data) => {
 		console.log(`ASSEMBLER STDERR: ${data.toString()}`)
 		res.json({"error": data.toString().split("\n")})
+		simulator.kill('SIGHUP')
 	})
 
 	simulator.on('spawn', () => {
@@ -70,10 +71,10 @@ app.post('/api/assembler', (req, res) => {
 		}
 	})
 
-	simulator.on('exit', code => {
+	simulator.on('exit', (code, signal) => {
 		if (code == 0)
 			res.json(output)
-		else
+		else if (signal != 'SIGHUP')
 			res.status(500).end()
 	})
 })
