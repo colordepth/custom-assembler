@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import promiseService from './services/promises.js'
 
@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
 
         <textarea
           wrap="off"
@@ -33,7 +33,7 @@ const App = () => {
                 console.log(data)
                 if (data.error)
                 {
-                  setAssemblerOutput(data.error)
+                  setAssemblerOutput(data.error.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
                   setSimulatorOutput("")
                 }
                 else
@@ -47,11 +47,11 @@ const App = () => {
         >Run</button>
 
         {assemblerOutput && "Assembler:"}<br/>
-        <ul>
+        <ul style={{listStyleType : "none"}}>
           {assemblerOutput}
         </ul>
-        {assemblerOutput && "Simulator:"}<br/>
-        <ul>
+        {simulatorOutput && "Simulator:"}<br/>
+        <ul style={{listStyleType : "none"}}>
           {simulatorOutput}
         </ul>
       </header>
