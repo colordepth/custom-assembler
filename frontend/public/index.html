@@ -1,43 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+<!doctype html>
+<html>
+    <meta charset="utf-8">
+    <meta name="description" content="Basic assembler is a coding project by our three member team">
+    <link rel="stylesheet" href="home.css">
+    <head>
+        <title>Basic Assembler</title>
+    </head>
+    <body>
+        <header class="page-header">
+            <h1>Basic Assembler</h1>
+            <button>
+                <svg id="run-button-svg" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1648.4 1857.87"><defs><style>.cls-1{fill:#231f20;}</style></defs><path class="cls-1" d="M3080.93,3056.79,1729.78,2276.7c-99.08-57.2-222.94,14.3-222.94,128.71V3965.59c0,114.41,123.86,185.92,222.94,128.71l1351.15-780.09C3180,3257,3180,3114,3080.93,3056.79Z" transform="translate(-1506.84 -2256.57)"/></svg>
+                Run
+             </button>
+        </header>
+        <main>
+            <div id="brief-docs">
+            </div>
+            <textarea wrap="off" placeholder="Enter code here" rows="40" cols="100" name="name" autocapitalize="none">
+            </textarea>
+            <div id="run-data">
+            </div>
+        </main>
+    </body>
+</html> 
