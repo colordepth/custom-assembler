@@ -1,4 +1,4 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 	<meta charset="utf-8">
 	<meta name="description" content="Basic assembler is a coding project by our three member team">
@@ -7,106 +7,109 @@
 		<title>Basic Assembler</title>
 	</head>
 	<body>
-		<header className="page-header">
-			<h1 id="project-title">Basic Assembler</h1>
-			<button>
-				<img id="run-button-svg" src="run-button.svg">
-				<h1 id="run-button-text">Run</h1>
-			 </button>
-		</header>
-		<main>
-			<div id="brief-docs">
-				<h4 className=instruction-syntax>add reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs reg1 = reg2 + reg3.<br>
-                    If the computation overflows, then the overflow flag is set
-                </p>
-                <h4 className=instruction-syntax>sub reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs reg1 = reg2 - reg3.<br>
-                    In case reg3 > reg2, 0 is written to reg1 and overflow flag is set.
-                </p>
-                <h4 className=instruction-syntax>mov reg1 $Imm</h4>
-                <p className="instruction-description">
-                    Performs reg1 = $Imm where Imm is a 8 bit value.
-                </p>
-                <h4 className=instruction-syntax>mov reg1 reg2</h4>
-                <p className="instruction-description">
-                    Performs reg1 = reg2.  
-                </p>
-                <h4 className=instruction-syntax>ld reg1 mem_addr</h4>
-                <p className="instruction-description">
-                    Loads data from mem_addr into reg1.
-                </p>
-                <h4 className=instruction-syntax>st reg1 mem_addr</h4>
-                <p className="instruction-description">
-                    Stores data from reg1 to mem_addr.
-                </p>
-                <h4 className=instruction-syntax>mul reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs reg1 = reg2 x reg3.<br>
-                    If the computation overflows, then the overflow flag is set.
-                </p>
-                <h4 className=instruction-syntax>div reg3 reg4</h4>
-                <p className="instruction-description">
-                    Performs reg3/reg4.<br>
-                    Stores the quotient in R0 and the remainder in R1.
-                </p>
-                <h4 className=instruction-syntax>rs reg1 $Imm</h4>
-                <p className="instruction-description">
-                    Right shifts reg1 by $Imm, where $Imm is an 8 bit value.
-                </p>
-                <h4 className=instruction-syntax>ls reg1 $Imm</h4>
-                <p className="instruction-description">
-                    Left shifts reg1 by $Imm, where $Imm is an 8 bit value.
-                </p>
-                <h4 className=instruction-syntax>xor reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs bitwise XOR of reg2 and reg3. Stores the result in reg1.
-                </p>
-                <h4 className=instruction-syntax>or reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs bitwise OR of reg2 and reg3.<br>
-                    Stores the result in reg1.
-                </p>
-                <h4 className=instruction-syntax>and reg1 reg2 reg3</h4>
-                <p className="instruction-description">
-                    Performs bitwise AND of reg2 and reg3.<br>
-                    Stores the result in reg1.
-                </p>
-                <h4 className=instruction-syntax>not reg1 reg2</h4>
-                <p className="instruction-description">
-                    Performs bitwise NOT of reg2.<br>
-                    Stores the result in reg1.
-                </p>
-                <h4 className=instruction-syntax>cmp reg1 reg2</h4>
-                <p className="instruction-description">
-                    Compares reg1 and  C reg2 and sets up the FLAGS register.
-                </p>
-                <h4 className=instruction-syntax>jmp mem_addr</h4>
-                <p className="instruction-description">
-                    Unconditional Jumps to mem_addr.
-                </p>
-                <h4 className=instruction-syntax>jlt mem_addr</h4>
-                <p className="instruction-description">
-                    Jump to mem_addr if the less than flag is set (less than flag = 1), where mem_addr is a memory address. 
-                </p>
-                <h4 className=instruction-syntax>jgt mem_addr</h4>
-                <p className="instruction-description">
-                    Jump to mem_addr if the greater than flag is set (greater than flag = 1), where mem_addr is a memory address.
-                </p>
-                <h4 className=instruction-syntax>je mem_addr</h4>
-                <p className="instruction-description">
-                    Jump to mem_addr if the equal flag is set (equal flag = 1), where mem_addr is a memory address.
-                </p>
-                <h4 className=instruction-syntax>hlt</h4>
-                <p className="instruction-description">
-                    Halt Stops the machine from executing until reset
-                </p>
-			</div>
-			<textarea wrap="off" placeholder="Enter code here" rows="40" cols="100" name="name" autocapitalize="none"></textarea>
-			<div id="run-data">
-			</div>
-		</main>
+		<div id="root">
+			<!--
+				<header className="page-header">
+					<h1 id="project-title">Basic Assembler</h1>
+					<button>
+						<img id="run-button-svg" src="run-button.svg">
+						<h1 id="run-button-text">Run</h1>
+					</button>
+				</header>
+				<main>
+					<div id="brief-docs">
+						<h4 className=instruction-syntax>add reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs reg1 = reg2 + reg3.<br>
+							If the computation overflows, then the overflow flag is set
+						</p>
+						<h4 className=instruction-syntax>sub reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs reg1 = reg2 - reg3.<br>
+							In case reg3 > reg2, 0 is written to reg1 and overflow flag is set.
+						</p>
+						<h4 className=instruction-syntax>mov reg1 $Imm</h4>
+						<p className="instruction-description">
+							Performs reg1 = $Imm where Imm is a 8 bit value.
+						</p>
+						<h4 className=instruction-syntax>mov reg1 reg2</h4>
+						<p className="instruction-description">
+							Performs reg1 = reg2.  
+						</p>
+						<h4 className=instruction-syntax>ld reg1 mem_addr</h4>
+						<p className="instruction-description">
+							Loads data from mem_addr into reg1.
+						</p>
+						<h4 className=instruction-syntax>st reg1 mem_addr</h4>
+						<p className="instruction-description">
+							Stores data from reg1 to mem_addr.
+						</p>
+						<h4 className=instruction-syntax>mul reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs reg1 = reg2 x reg3.<br>
+							If the computation overflows, then the overflow flag is set.
+						</p>
+						<h4 className=instruction-syntax>div reg3 reg4</h4>
+						<p className="instruction-description">
+							Performs reg3/reg4.<br>
+							Stores the quotient in R0 and the remainder in R1.
+						</p>
+						<h4 className=instruction-syntax>rs reg1 $Imm</h4>
+						<p className="instruction-description">
+							Right shifts reg1 by $Imm, where $Imm is an 8 bit value.
+						</p>
+						<h4 className=instruction-syntax>ls reg1 $Imm</h4>
+						<p className="instruction-description">
+							Left shifts reg1 by $Imm, where $Imm is an 8 bit value.
+						</p>
+						<h4 className=instruction-syntax>xor reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs bitwise XOR of reg2 and reg3. Stores the result in reg1.
+						</p>
+						<h4 className=instruction-syntax>or reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs bitwise OR of reg2 and reg3.<br>
+							Stores the result in reg1.
+						</p>
+						<h4 className=instruction-syntax>and reg1 reg2 reg3</h4>
+						<p className="instruction-description">
+							Performs bitwise AND of reg2 and reg3.<br>
+							Stores the result in reg1.
+						</p>
+						<h4 className=instruction-syntax>not reg1 reg2</h4>
+						<p className="instruction-description">
+							Performs bitwise NOT of reg2.<br>
+							Stores the result in reg1.
+						</p>
+						<h4 className=instruction-syntax>cmp reg1 reg2</h4>
+						<p className="instruction-description">
+							Compares reg1 and  C reg2 and sets up the FLAGS register.
+						</p>
+						<h4 className=instruction-syntax>jmp mem_addr</h4>
+						<p className="instruction-description">
+							Unconditional Jumps to mem_addr.
+						</p>
+						<h4 className=instruction-syntax>jlt mem_addr</h4>
+						<p className="instruction-description">
+							Jump to mem_addr if the less than flag is set (less than flag = 1), where mem_addr is a memory address. 
+						</p>
+						<h4 className=instruction-syntax>jgt mem_addr</h4>
+						<p className="instruction-description">
+							Jump to mem_addr if the greater than flag is set (greater than flag = 1), where mem_addr is a memory address.
+						</p>
+						<h4 className=instruction-syntax>je mem_addr</h4>
+						<p className="instruction-description">
+							Jump to mem_addr if the equal flag is set (equal flag = 1), where mem_addr is a memory address.
+						</p>
+						<h4 className=instruction-syntax>hlt</h4>
+						<p className="instruction-description">
+							Halt Stops the machine from executing until reset
+						</p>
+					</div>
+					<textarea wrap="off" placeholder="Enter code here" rows="40" cols="100" name="name" autocapitalize="none"></textarea>
+					<div id="run-data"></div>
+				</main>
+			-->
+		</div>
 	</body>
 </html> 

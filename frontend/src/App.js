@@ -1,22 +1,59 @@
+import { useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import promiseService from './services/promises.js'
 
-function App() {
+const App = () => {
+  const [assemblerOutput, setAssemblerOutput] = useState('')
+  const [simulatorOutput, setSimulatorOutput] = useState('')
+  const [code, setCode] = useState('')
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <textarea
+          wrap="off"
+          placeholder="Enter code here"
+          rows="40"
+          cols="100"
+          name="name"
+          autoCapitalize="none"
+          onChange={(event) => setCode(event.target.value)}
+          value={code}
+        />
+
+        <button
+          onClick={event => {
+            event.preventDefault()
+            promiseService
+              .sendCode(code)
+              .then(data => {
+                console.log(data)
+                if (data.error)
+                {
+                  setAssemblerOutput(data.error)
+                  setSimulatorOutput("")
+                }
+                else
+                {
+                  setAssemblerOutput(data.assembler.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
+                  setSimulatorOutput(data.simulator.register_states.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
+                }
+              })
+          }}
+          style={{fontSize: "20px", margin: "20px"}}
+        >Run</button>
+
+        {assemblerOutput && "Assembler:"}<br/>
+        <ul>
+          {assemblerOutput}
+        </ul>
+        {assemblerOutput && "Simulator:"}<br/>
+        <ul>
+          {simulatorOutput}
+        </ul>
       </header>
     </div>
   );
