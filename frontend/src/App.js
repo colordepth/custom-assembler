@@ -13,16 +13,19 @@ const App = () => {
       <header className="App-header">
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
 
-        <textarea
-          wrap="off"
-          placeholder="Enter code here"
-          rows="40"
-          cols="100"
-          name="name"
-          autoCapitalize="none"
-          onChange={(event) => setCode(event.target.value)}
-          value={code}
-        />
+        <div className="code">
+          <h2>Code</h2>
+          <textarea
+            wrap="off"
+            placeholder="Enter code here"
+            rows="40"
+            cols="100"
+            name="name"
+            autoCapitalize="none"
+            onChange={(event) => setCode(event.target.value)}
+            value={code}
+          />
+        </div>
 
         <button
           onClick={event => {
@@ -54,6 +57,18 @@ const App = () => {
         <ul style={{listStyleType : "none"}}>
           {simulatorOutput}
         </ul>
+        <div className="instruction-set">
+          <h2>Instruction set</h2>  
+        </div>
+        <div className="memory-access-graph">  
+          <h2>Memory access graph</h2>
+        </div>
+        <div className="registers">
+          <h2>Registers</h2>  
+        </div>
+        <div className="variables">  
+          <h2>Variables</h2>
+        </div>
       </header>
     </div>
   );
