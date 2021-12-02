@@ -14,7 +14,7 @@ const App = () => {
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
 
         <div className="code">
-          <h2>Code</h2>
+          <h2 className="section-header">Code</h2>
           <textarea
             wrap="off"
             placeholder="Enter code here"
@@ -58,16 +58,17 @@ const App = () => {
           {simulatorOutput}
         </ul>
         <div className="instruction-set">
-          <h2>Instruction set</h2>  
+          <h2 className="section-header">Instruction set</h2>  
+          <li></li> 
         </div>
         <div className="memory-access-graph">  
-          <h2>Memory access graph</h2>
+          <h2 className="section-header">Memory access graph</h2>
         </div>
         <div className="registers">
-          <h2>Registers</h2>  
+          <h2 className="section-header">Registers</h2>  
         </div>
         <div className="variables">  
-          <h2>Variables</h2>
+          <h2 className="section-header">Variables</h2>
         </div>
       </header>
     </div>
