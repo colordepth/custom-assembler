@@ -1,75 +1,22 @@
-import { useState } from 'react'
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
-import promiseService from './services/promises.js'
 
-const App = () => {
-  const [assemblerOutput, setAssemblerOutput] = useState('')
-  const [simulatorOutput, setSimulatorOutput] = useState('')
-  const [code, setCode] = useState('')
-
+function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-
-        <div className="code">
-          <h2 className="section-header">Code</h2>
-          <textarea
-            wrap="off"
-            placeholder="Enter code here"
-            rows="40"
-            cols="100"
-            name="name"
-            autoCapitalize="none"
-            onChange={(event) => setCode(event.target.value)}
-            value={code}
-          />
-        </div>
-
-        <button
-          onClick={event => {
-            event.preventDefault()
-            promiseService
-              .sendCode(code)
-              .then(data => {
-                console.log(data)
-                if (data.error)
-                {
-                  setAssemblerOutput(data.error.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
-                  setSimulatorOutput("")
-                }
-                else
-                {
-                  setAssemblerOutput(data.assembler.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
-                  setSimulatorOutput(data.simulator.register_states.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
-                }
-              })
-          }}
-          style={{fontSize: "20px", margin: "20px"}}
-        >Run</button>
-
-        {assemblerOutput && "Assembler:"}<br/>
-        <ul style={{listStyleType : "none"}}>
-          {assemblerOutput}
-        </ul>
-        {simulatorOutput && "Simulator:"}<br/>
-        <ul style={{listStyleType : "none"}}>
-          {simulatorOutput}
-        </ul>
-        <div className="instruction-set">
-          <h2 className="section-header">Instruction set</h2>  
-          <li></li> 
-        </div>
-        <div className="memory-access-graph">  
-          <h2 className="section-header">Memory access graph</h2>
-        </div>
-        <div className="registers">
-          <h2 className="section-header">Registers</h2>  
-        </div>
-        <div className="variables">  
-          <h2 className="section-header">Variables</h2>
-        </div>
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
     </div>
   );
