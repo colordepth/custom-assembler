@@ -5,7 +5,7 @@ require('dotenv').config()
 
 const server = http.createServer(app)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 server.listen(PORT, () => {
 	logger.info(`Server running on port ${PORT}`)
