@@ -3,8 +3,8 @@ const logger = require('../utils/logger')
 const {spawn} = require('child_process')
 
 assemblerRouter.post('/', (req, res) => {
-	const simulator = spawn('python3', ['../SimpleSimulator/simulator.py'])
-	const assembler = spawn('python3', ['../Simple-Assembler/assembler.py'])
+	const simulator = spawn('python3', ['SimpleSimulator/simulator.py'])
+	const assembler = spawn('python3', ['Simple-Assembler/assembler.py'])
 
 	let output = {
 		assembler: [],
@@ -14,7 +14,8 @@ assemblerRouter.post('/', (req, res) => {
 		}
 	}
 
-	assembler.stdin.write(req.body.code).end()
+	assembler.stdin.write(req.body.code)
+	assembler.stdin.end()
 
 	assembler.on('error', err => {
 		logger.error('Failed to start Assembler.');
@@ -58,7 +59,8 @@ assemblerRouter.post('/', (req, res) => {
 		if (code != 0)
 			return
 		
-		simulator.stdin.write(output.assembler).end()
+		simulator.stdin.write(output.assembler)
+		simulator.stdin.end()
 		output.assembler = output.assembler.split('\n')
 	})
 
