@@ -1,12 +1,12 @@
 {
-  "name": "co_m21",
+  "name": "CO_M21",
   "version": "2.0.0",
   "description": "Assembler and Simulator for a custom CPU instruction set",
   "main": "backend/index.js",
   "scripts": {
-    "start": "npm start --prefix server",
-    "install": "npm install --prefix frontend && npm install --prefix server",
-    "build": "npm run build --prefix frontend > /dev/null && mv frontend/build server/build"
+    "start": "node index.js",
+    "install": "npm install --prefix frontend && npm install --prefix API",
+    "build": "npm run build --prefix frontend > /dev/null"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/color-depth/CO_M21/issues"
   },
-  "homepage": "https://github.com/color-depth/CO_M21#readme"
+  "homepage": "https://github.com/color-depth/CO_M21#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
