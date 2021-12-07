@@ -1,16 +1,16 @@
 # Custom Assembler
-Assembler and Simulator for a custom instruction set
+Assembler and simulator for a custom instruction set
 
 ## Installing dependencies
-> npm install
-> pip3 install requirements.txt
+`pip3 install requirements.txt` \
+`npm install`
 
 ## Running development server
-> npm run dev-full
+`npm run dev-full`
 
 ## Running full build
-> npm build
-> npm start
+`npm build` \
+`npm start`
 
 ## Automated Testing
 * Go to the `automatedTesting` directory and execute the `run` file with appropiate options passed as arguments.
