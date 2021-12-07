@@ -8,7 +8,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -146,7 +145,7 @@ node_modules
 coverage
 
 # production
-build
+build/
 
 # misc
 .DS_Store
@@ -159,5 +158,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#vscode cache
+# vscode project config
 .vscode
