@@ -1,4 +1,4 @@
-# Assembler
+# Custom Assembler
 Assembler and Simulator for a custom instruction set
 
 ## Installing dependencies
