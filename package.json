@@ -1,0 +1,24 @@
+{
+  "name": "co_m21",
+  "version": "2.0.0",
+  "description": "Assembler and Simulator for a custom CPU instruction set",
+  "main": "backend/index.js",
+  "scripts": {
+    "start": "npm start --prefix server",
+    "install": "npm install --prefix frontend && npm install --prefix server",
+    "build": "npm run build --prefix frontend > /dev/null && mv frontend/build server/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/color-depth/CO_M21.git"
+  },
+  "keywords": [
+    "assembler"
+  ],
+  "author": "Deep Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/color-depth/CO_M21/issues"
+  },
+  "homepage": "https://github.com/color-depth/CO_M21#readme"
+}
