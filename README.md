@@ -1,13 +1,18 @@
-# CO M21 Assignment
-Starter repository for Computer Organization, Monsoon 2021 semester, assignment at IIITD
+# Assembler
+Assembler and Simulator for a custom instruction set
 
-## Adding code
-* Add the assembler code in the `Simple-Assembler` directory. Add the commands to execute the assembler in `Simple-Assembler/run`.
-* Add the simulator code in the `SimpleSimulator` directory. Add the commands to execute the assembler in `SimpleSimulator/run`.
-* Make sure that both the assembler and the simulator read from `stdin`.
-* Make sure that both the assembler and the simulator write to `stdout`.
+## Installing dependencies
+> npm install
+> pip3 install requirements.txt
 
-## How to evaluate
+## Running development server
+> npm run dev-full
+
+## Running full build
+> npm build
+> npm start
+
+## Automated Testing
 * Go to the `automatedTesting` directory and execute the `run` file with appropiate options passed as arguments.
 * Options available for automated testing:
 	1. `--verbose`: Prints verbose output
