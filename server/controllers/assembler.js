@@ -1,10 +1,11 @@
 const assemblerRouter = require('express').Router()
 const logger = require('../utils/logger')
 const {spawn} = require('child_process')
+const path = require('path')
 
 assemblerRouter.post('/', (req, res) => {
-	const simulator = spawn('python3', ['SimpleSimulator/simulator.py'])
-	const assembler = spawn('python3', ['Simple-Assembler/assembler.py'])
+	const simulator = spawn('python3', [path.join(__dirname, '../../SimpleSimulator/simulator.py')])
+	const assembler = spawn('python3', [path.join(__dirname, '../../Simple-Assembler/assembler.py')])
 
 	let output = {
 		assembler: [],
@@ -27,7 +28,7 @@ assemblerRouter.post('/', (req, res) => {
 	})
 
 	assembler.stderr.on('data', data => {
-		logger.info(`ASSEMBLER STDERR: ${data.toString()}`)
+		// logger.info(`ASSEMBLER STDERR: ${data.toString()}`)
 		res.json({"error": data.toString().split("\n")})
 		simulator.kill('SIGHUP')
 	})
