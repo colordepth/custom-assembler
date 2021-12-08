@@ -1,0 +1,25 @@
+.Run-button
+{
+  font-size: 20px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #714412;
+  border: none;
+  display: flex;
+  padding-left: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+#run-button-svg
+{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1.2rem;
+  fill: #CCC;
+}
+
+
+.Run-button:hover
+{
+  background-color: #CCC;
+}
