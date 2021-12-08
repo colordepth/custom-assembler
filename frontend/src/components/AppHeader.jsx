@@ -4,7 +4,10 @@ import RunButton from './RunButton'
 const AppHeader = props => {
   return (
     <header className="App-header">
-      Basic Assembler
+      <nav>
+        <a className="page-heading" href="#">Basic Assembler</a>
+        <a className="about-button" href="#">About</a>
+      </nav>
       <RunButton
         onClick={() => postAssemblerCode(props)}
       />
