@@ -13,7 +13,7 @@ Pillow library may require the following packages to be installed first \
 `npm run dev-full`
 
 ## Running full build
-`npm build` \
+`npm run build` \
 `npm start`
 
 ## Automated Testing
