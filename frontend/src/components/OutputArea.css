@@ -1,0 +1,28 @@
+.output-area
+{
+  display: flex;
+  height: 35rem;
+  /* width: 100%; */
+  margin: 2rem;
+  margin-bottom: 0;
+  
+  box-sizing: border-box;
+  padding: 1rem 3rem;
+  justify-content: space-between;
+  
+  height: 100%;
+  background-color: #201202;
+  border-radius: 1rem;
+  border: 1px solid #714412;
+  
+}
+
+.memory-trace-image
+{
+  width: 15rem;
+  height: 15rem;
+  
+  border-radius: 1rem;
+  background-color: #CCC;
+
+}

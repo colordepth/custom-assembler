@@ -1,3 +1,5 @@
+import './OutputArea.css';
+
 const OutputArea = ({assemblerOutput, simulatorOutput}) => {
   return (
     <div className="output-area">

@@ -1,0 +1,17 @@
+.instruction-set
+{
+  width:15.6rem;
+  height: 100%;
+  border: 1px solid #714412;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color:#201202;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.instruction-syntax
+{
+  font-size: 1.3rem;
+  padding-bottom: 0.5rem;
+}

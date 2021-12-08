@@ -1,4 +1,5 @@
 import InstructionSet from './InstructionSet'
+import './WorkArea.css';
 
 const WorkArea = ({code, setCode}) => {
 
