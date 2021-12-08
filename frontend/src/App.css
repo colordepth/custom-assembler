@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+*
+{
+  padding: 0;
+  margin: 0;
+  color: #CCC;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul
+{
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html
+{
+  background-color: #18130C;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App 
+{
+  padding-bottom: 2rem;
+}
+
+.instruction-set
+{
+  width:15.6rem;
+  height: 100%;
+  border: 1px solid #714412;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color:#201202;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.App-header
+{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  font-size: 3rem;
+  margin:0;
+  padding: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.Run-button
+{
+  font-size: 20px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #714412;
+  border: none;
+  display: flex;
+  padding-left: 1.5rem;
+  font-family: 'Roboto', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#run-button-svg
+{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1.2rem;
+  fill: #CCC;
+}
+
+.work-area
+{
+  display: flex;
+  height: 35rem;
+  /* width: 100%; */
+  padding: 0rem 2rem;
+  box-sizing: border-box;
+}
+
+.Run-button:hover
+{
+  background-color: #CCC;
+}
+
+textarea
+{
+  background-color:#201202;
+  border-radius: 1rem;
+  border-color: #714412;
+  height: 100%;
+  width: calc(100% - 15.6rem);
+  resize: none;
+  margin: 2rem;
+  margin-right: 0rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.output-area
+{
+  display: flex;
+  height: 35rem;
+  /* width: 100%; */
+  margin: 2rem;
+  margin-bottom: 0;
+  
+  box-sizing: border-box;
+  padding: 1rem 3rem;
+  justify-content: space-between;
+  
+  height: 100%;
+  background-color: #201202;
+  border-radius: 1rem;
+  border: 1px solid #714412;
+  
+}
+
+.section-header
+{
+  margin-bottom: 1.5rem;
+}
+
+.memory-trace-image
+{
+  width: 15rem;
+  height: 15rem;
+  
+  border-radius: 1rem;
+  background-color: #CCC;
+
 }
