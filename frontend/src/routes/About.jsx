@@ -12,6 +12,28 @@ const App = () => {
           <a className="page-heading" href="#">Basic Assembler</a>
         </nav>
       </header>
+      <h1>Our Project</h1>
+      <p>Lorem ipsum dolor bolor folor golor</p>
+      <ul className="profiles">
+        <li>
+          <div>
+            </div>
+            <h1></h1>
+            <h4></h4>
+        </li>
+        <li>
+          <div>
+            </div>
+            <h1></h1>
+            <h4></h4>
+        </li>
+        <li>
+          <div>
+            </div>
+            <h1></h1>
+            <h4></h4>
+        </li>
+      </ul>
     </div>
   );
 }
