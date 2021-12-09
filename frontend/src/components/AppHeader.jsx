@@ -1,16 +1,23 @@
-import promiseService from '../services/promises.js'
+import promiseService from '../services/promises'
 import RunButton from './RunButton'
+import {useMatch, Link} from 'react-router-dom'
 
 const AppHeader = props => {
+  const match = useMatch('/')
+  const navStyle = {display: "flex", justifyContent: "space-between", gap: "3rem"}
+
   return (
     <header className="App-header">
-      <nav>
-        <a className="page-heading" href="#">Basic Assembler</a>
-        <a className="about-button" href="#">About</a>
+      <nav style={navStyle}>
+        <Link className="page-heading" to="/">Basic Assembler</Link>
+        <Link className="about-button" to="/about">About</Link>
       </nav>
-      <RunButton
-        onClick={() => postAssemblerCode(props)}
-      />
+      { match ? 
+        <RunButton
+          onClick={() => postAssemblerCode(props)}
+        />
+        : null
+      }
     </header>
   )
 }

@@ -38,7 +38,7 @@ const MemoryTrace = () => {
   return (
     <div className="memory-trace-graph-container">  
       <h2 className="section-header">Memory access graph</h2>
-      <img className="memory-trace-image"></img>
+      <img className="memory-trace-image" alt="memory trace graph"></img>
     </div>
   )
 }

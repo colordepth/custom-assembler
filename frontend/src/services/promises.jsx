@@ -8,4 +8,6 @@ const sendCode = code => {
 	return request.then(response => response.data)
 }
 
-export default {sendCode}
+const promises = {sendCode}
+
+export default promises
