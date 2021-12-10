@@ -5,15 +5,15 @@
   /* width: 100%; */
   margin: 2rem;
   margin-bottom: 0;
-  
+  flex-wrap: wrap; 
   box-sizing: border-box;
   padding: 1rem 3rem;
   justify-content: space-between;
   
   height: 100%;
-  background-color: #201202;
+  background-color: #000;
   border-radius: 1rem;
-  border: 1px solid #714412;
+  border: 1px solid #FF4500;
   
 }
 

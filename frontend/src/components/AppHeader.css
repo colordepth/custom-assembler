@@ -5,4 +5,33 @@
   font-size: 3rem;
   margin:0;
   padding: 2rem;
+  align-items: baseline;
+}
+
+.about-button
+{
+  font-size: 2.75rem;
+  font-family: "Teko", arial;
+}
+
+nav
+{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.page-heading
+{
+  margin-right: 3rem;
+  font-family: "Squada One", arial;
+}
+
+
+.header-underline
+{
+  height: 0.1rem;
+  width: 12rem;
+  background-color: #FF4500;
+  margin-top: 0.5rem;
 }

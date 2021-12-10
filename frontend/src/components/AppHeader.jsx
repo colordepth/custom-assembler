@@ -5,12 +5,14 @@ import {useMatch, Link} from 'react-router-dom'
 
 const AppHeader = props => {
   const match = useMatch('/')
-  const navStyle = {display: "flex", justifyContent: "space-between", gap: "3rem"}
 
   return (
     <header className="App-header">
-      <nav style={navStyle}>
-        <Link className="page-heading" to="/">Basic Assembler</Link>
+      <nav> 
+        <div className="page-title-block">
+          <Link className="page-heading" to="/">Custom Assembler</Link>
+          <div className="header-underline"></div>
+        </div>
         <Link className="about-button" to="/about">About</Link>
       </nav>
       { match ? 

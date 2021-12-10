@@ -18,7 +18,6 @@ const App = () => {
         setAssemblerOutput={setAssemblerOutput}
         setSimulatorOutput={setSimulatorOutput}
       />
-
       <Routes>
         <Route path='/' element={
           <Assembler

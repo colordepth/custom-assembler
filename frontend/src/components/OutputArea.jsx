@@ -5,7 +5,6 @@ const OutputArea = ({assemblerOutput, simulatorOutput}) => {
     <div className="output-area">
 
       <AssemblerOutput output={assemblerOutput}/>
-      <SimulatorOutput output={simulatorOutput}/>
       <MemoryTrace/>
       <Registers/>
       <Variables/>
