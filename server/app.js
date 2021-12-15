@@ -12,6 +12,9 @@ app.use(middleware.requestLogger)
 app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 app.use('/api/assembler', assemblerRouter)
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+})
 
 app.use(middleware.unknownEndpoint)
 
