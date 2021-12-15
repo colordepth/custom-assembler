@@ -1,13 +1,19 @@
 import './OutputArea.css';
 
 const OutputArea = ({assemblerOutput, simulatorOutput}) => {
+  const lastRegisterState = simulatorOutput && simulatorOutput.register_states.at(-1)
+  const lastMemoryState = simulatorOutput && simulatorOutput.memory_dump
+
+  if (!assemblerOutput)
+    return null
+
   return (
     <div className="output-area">
 
       <AssemblerOutput output={assemblerOutput}/>
-      <MemoryTrace/>
-      <Registers/>
-      <Variables/>
+      <MemoryTrace />
+      <Registers state={lastRegisterState}/>
+      <Variables state={lastMemoryState}/>
 
     </div>
   )
@@ -18,20 +24,9 @@ const AssemblerOutput = ({output}) => {
     <div className="assembler-output-container">
       <h2 className="section-header">Assembler</h2>
         <ul>
-          {output}
+          {output && output.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>)}
         </ul>
     </div>
-  )
-}
-
-const SimulatorOutput = ({output}) => {
-  return (
-    <>
-      {output && "Simulator:"}<br/>
-      <ul>
-        {output}
-      </ul>
-    </>
   )
 }
 
@@ -44,49 +39,52 @@ const MemoryTrace = () => {
   )
 }
 
-const Registers = () => {
+const Registers = ({state}) => {
   return (
     <div className="registers-container">
       <h2 className="section-header">Registers</h2>  
-      <ol className="register-list">
-        <li className="register-text">
-          r0 : 10001111
-        </li>
-        <li className="register-text">
-          r1 : 10001111
-        </li>
-        <li className="register-text">
-          r2 : 10001111
-        </li>
-        <li className="register-text">
-          r3 : 10001111
-        </li>
-        <li className="register-text">
-          r4 : 10001111
-        </li>
-        <li className="register-text">
-          r5 : 10001111
-        </li>
-        <li className="register-text">
-          r6 : 10001111
-        </li>
-        <li className="register-text">
-          r7 : 10001111
-        </li>
-      </ol>
+        <RegistersList state={state}/>
     </div>
   )
 }
 
-const Variables = () => {
+const RegistersList = ({state}) => {
+  const registerNames = ['PC', 'R0', 'R1', 'R2', 'R3', 'R4', 'R5', 'FLAGS']
+
+  const registersList = state && registerNames.map((name, i) => 
+    <tr className="register-text" key={name}>
+      <td style={{border: "solid 1px white", padding: "6px"}}>{name}</td>
+      <td style={{border: "solid 1px white", padding: "6px"}}>{state[i]}</td>
+    </tr>
+  )
+
+  return (
+    <table className="register-list">
+      <tbody>
+        <tr>
+          <th style={{border: "solid 1px white", padding: "6px"}}>Register</th>
+          <th style={{border: "solid 1px white", padding: "6px"}}>Data</th>
+        </tr>
+        {registersList}
+      </tbody>
+    </table>
+  )
+}
+
+const Variables = ({state}) => {
+  console.log(state)
+  const variablesList = state && state.map((block, i) => 
+    <li className="variable-text" key={block + i}>
+      {block}
+    </li >
+  )
+
   return (
     <div className="variables-container">  
-      <h2 className="section-header">Variables</h2>
-      <ul className="varaible-list">
-        <li className="variable-text">
-          a : 11110000
-        </li >
-      </ul>
+      <h2 className="section-header">Memory Dump</h2>
+      <ol className="variable-list">
+        {variablesList}
+      </ol>
     </div>
   )
 }

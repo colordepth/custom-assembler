@@ -9,7 +9,7 @@ const WorkArea = ({code, setCode}) => {
       <textarea
         spellCheck={false}
         wrap="off"
-        placeHolder="Enter code here"
+        placeholder="Enter code here"
         autoCapitalize={null}
         onChange={(event) => setCode(event.target.value)}
         value={code}  

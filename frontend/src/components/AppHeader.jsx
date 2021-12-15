@@ -34,13 +34,13 @@ const postAssemblerCode = IO => {
       console.log(data)
       if (data.error)
       {
-        setAssemblerOutput(data.error.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
+        setAssemblerOutput(data.error)
         setSimulatorOutput("")
       }
       else
       {
-        setAssemblerOutput(data.assembler.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
-        setSimulatorOutput(data.simulator.register_states.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>))
+        setAssemblerOutput(data.assembler)
+        setSimulatorOutput(data.simulator)
       }
     })
 }
