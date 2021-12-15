@@ -8,7 +8,7 @@ import './App.css';
 const App = () => {
   const [assemblerOutput, setAssemblerOutput] = useState('')
   const [simulatorOutput, setSimulatorOutput] = useState('')
-    const [code, setCode] = useState('')
+  const [code, setCode] = useState('')
 
   return (
     <div className="App">
@@ -28,6 +28,7 @@ const App = () => {
           />
         }/>
         <Route path='/about' element={<About/>} />
+        <Route path='/*' element={<div>404 Not Found</div>} />
       </Routes>
 
     </div>

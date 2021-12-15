@@ -1,5 +1,6 @@
 import WorkArea from '../components/WorkArea'
 import OutputArea from '../components/OutputArea'
+import './Assembler.css'
 
 const Assembler = props => {
   return (
