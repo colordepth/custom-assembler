@@ -24,7 +24,7 @@ const AssemblerOutput = ({output}) => {
     <div className="assembler-output-container">
       <h2 className="section-header">Assembler</h2>
         <ul>
-          {output && output.map((line, i) => <li key={line + i.toString()}><code>{line}</code></li>)}
+          {output && output.map((line, i) => <li key={"assemblerOutput" + i}>{line}</li>)}
         </ul>
     </div>
   )
@@ -74,7 +74,7 @@ const RegistersList = ({state}) => {
 const Variables = ({state}) => {
   console.log(state)
   const variablesList = state && state.map((block, i) => 
-    <li className="variable-text" key={block + i}>
+    <li className="variable-text" key={"variablesList" + i}>
       {block}
     </li >
   )
