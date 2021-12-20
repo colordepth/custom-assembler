@@ -8,7 +8,7 @@
     "install": "npm install --prefix frontend && npm install --prefix server",
     "dev-server": "nodemon index.js",
     "dev-full": "concurrently \"npm run dev-server\" \"npm start --prefix frontend\"",
-    "build": "npm run build --prefix frontend > /dev/null"
+    "build": "npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
