@@ -9,7 +9,8 @@
   border: none;
   display: flex;
   justify-content: space-between;
-  align-items: last baseline;
+  align-items: baseline;
+  padding-top: 0.263rem;
   padding-left: 1.5rem;
   border:#714412 1px solid;
 }
