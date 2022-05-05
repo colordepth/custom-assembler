@@ -3,7 +3,7 @@ Assembler and simulator for a custom instruction set
 
 ## Installing dependencies
 `pip3 install -r requirements.txt` \
-`npm install`
+`npm ci`
 
 Pillow library may require the following packages to be installed first \
 - libjpeg-dev (libjpeg62-turbo-dev or libjpeg8-dev)
