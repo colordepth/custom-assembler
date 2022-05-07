@@ -1,4 +1,4 @@
-import runButtonSVG from '../run-button.svg';
+import runButtonSVG from '../assets/run-button.svg';
 import './RunButton.css';
 
 const RunButton = ({onClick}) => {

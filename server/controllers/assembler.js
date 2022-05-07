@@ -44,7 +44,7 @@ assemblerRouter.post('/', (req, res) => {
 			.split('\n')
 			.forEach(line => {
 				if (line.split(' ').length > 1)
-					output.simulator.register_states.push(line)
+					output.simulator.register_states.push(line.split(' '))
 				else
 					output.simulator.memory_dump.push(line)
 			})

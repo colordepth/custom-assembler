@@ -1,21 +1,26 @@
 .Run-button
 {
-  font-size: 20px;
+  font-family: "Teko", arial;
+  font-size: 2.5rem;
+  width: 9rem;
+  height: 4rem;
   border-radius: 0.5rem;
-  padding: 1rem;
-  background-color: #714412;
+  background-color: #FF4500;
   border: none;
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.263rem;
   padding-left: 1.5rem;
-  font-family: 'Roboto', sans-serif;
   border:#714412 1px solid;
 }
 
 #run-button-svg
 {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   margin-left: 1.2rem;
+  margin-right: 1.2rem;
 }
 
 

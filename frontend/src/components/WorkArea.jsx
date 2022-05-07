@@ -7,9 +7,10 @@ const WorkArea = ({code, setCode}) => {
     <div className="work-area">
       <InstructionSet/>
       <textarea
+        spellCheck={false}
         wrap="off"
         placeholder="Enter code here"
-        autoCapitalize="none"
+        autoCapitalize={null}
         onChange={(event) => setCode(event.target.value)}
         value={code}  
       />
