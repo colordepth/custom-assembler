@@ -1,48 +1,60 @@
-import promiseService from '../services/promises'
-import RunButton from './RunButton'
+import { useMatch, Link } from 'react-router-dom'
 import './AppHeader.css';
-import {useMatch, Link} from 'react-router-dom'
 
-const AppHeader = props => {
+import { ArrowLeft, ArrowRight, Bug, FastForward, FileCode2, Play, RotateCcw, Square } from 'lucide-react';
+
+const AppHeader = ({ debuggerControls, onCompile, isEdited }) => {
   const match = useMatch('/')
 
   return (
     <header className="App-header">
-      <nav> 
+      <nav>
         <div className="page-title-block">
           <Link className="page-heading" to="/">Custom Assembler</Link>
-          <div className="header-underline"></div>
         </div>
         <Link className="about-button" to="/about">About</Link>
       </nav>
-      { match ? 
-        <RunButton
-          onClick={() => postAssemblerCode(props)}
-        />
-        : null
-      }
+
+      {match && debuggerControls ? (
+        <DebugToolbar controls={debuggerControls} onCompile={onCompile} isEdited={isEdited} />
+      ) : null}
     </header>
   )
 }
 
-const postAssemblerCode = IO => {
-  const {setAssemblerOutput, setSimulatorOutput, code} = IO
+const DebugToolbar = ({ controls, onCompile, isEdited }) => {
+  const {
+    onRun, onDebug, onStepOver, onStepBack, onResume, onStop, onRestart,
+    isDebugging, canStepBack, canStepForward,
+  } = controls
 
-  promiseService
-    .sendCode(code)
-    .then(data => {
-      console.log(data)
-      if (data.error)
-      {
-        setAssemblerOutput(data.error)
-        setSimulatorOutput("")
-      }
-      else
-      {
-        setAssemblerOutput(data.assembler)
-        setSimulatorOutput(data.simulator)
-      }
-    })
+  return (
+    <div className="debug-toolbar">
+      <button className="toolbar-btn compile" title="Compile only" onClick={onCompile}>
+        <FileCode2 size={14} aria-hidden="true" />
+        Compile
+      </button>
+      <button className="toolbar-btn run" title="Run (assemble + simulate)" onClick={onRun}>
+        <Play size={14} fill="currentColor" aria-hidden="true" /> Run
+      </button>
+      <button className="toolbar-btn debug" title="Debug" onClick={onDebug}>
+        <Bug size={14} aria-hidden="true" /> Debug
+      </button>
+
+      <span className="toolbar-separator" />
+
+      <button className="toolbar-btn icon" title="Step back" onClick={onStepBack}
+        disabled={!isDebugging || !canStepBack}><ArrowLeft size={15} /></button>
+      <button className="toolbar-btn icon" title="Step over" onClick={onStepOver}
+        disabled={!isDebugging || !canStepForward}><ArrowRight size={15} /></button>
+      <button className="toolbar-btn icon" title="Resume to next breakpoint" onClick={onResume}
+        disabled={!isDebugging || !canStepForward}><FastForward size={15} /></button>
+      <button className="toolbar-btn icon" title="Restart debug session" onClick={onRestart}
+        disabled={!isDebugging}><RotateCcw size={15} /></button>
+      <button className="toolbar-btn icon stop" title="Stop" onClick={onStop}
+        disabled={!isDebugging}><Square size={14} fill="currentColor" /></button>
+    </div>
+  )
 }
 
 export default AppHeader

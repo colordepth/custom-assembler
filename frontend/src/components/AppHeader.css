@@ -1,37 +1,120 @@
-.App-header
-{
+.App-header {
   display: flex;
   justify-content: space-between;
-  font-size: 3rem;
-  margin:0;
-  padding: 2rem;
-  align-items: baseline;
+  align-items: center;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: #3c3f41;
+  border-bottom: 1px solid #323232;
 }
 
-.about-button
-{
-  font-size: 2.75rem;
-  font-family: "Teko", arial;
-}
-
-nav
-{
+nav {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
-.page-heading
-{
-  margin-right: 3rem;
+.page-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.page-heading {
   font-family: "Squada One", arial;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: #f2f4f8;
 }
 
-
-.header-underline
-{
-  height: 0.1rem;
-  width: 12rem;
-  background-color: #FF4500;
-  margin-top: 0.5rem;
+.about-button {
+  font-size: 13px;
+  color: #9da7b3;
+  padding: 3px 10px;
+  border-radius: 4px;
 }
+
+.about-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #d7dce2;
+}
+
+/* ---------- Debug toolbar ---------- */
+
+.debug-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #9da7b3;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: #d7dce2;
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.toolbar-btn.run {
+  color: #6a8759;
+  font-weight: bold;
+}
+
+.toolbar-btn.compile {
+  color: #d7c27d;
+  font-weight: bold;
+}
+
+.toolbar-btn.compile:hover {
+  color: #f0dc9c;
+}
+
+.toolbar-btn.run:hover {
+  color: #a8c68f;
+}
+
+.toolbar-btn.debug {
+  color: #c77dbb;
+  font-weight: bold;
+}
+
+.toolbar-btn.debug:hover {
+  color: #e2a5d8;
+}
+
+.toolbar-btn.icon {
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.toolbar-btn svg {
+  flex: 0 0 auto;
+}
+
+.toolbar-btn.stop {
+  color: #e05555;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 18px;
+  background: #515151;
+  margin: 0 6px;
+}
+

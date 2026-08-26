@@ -1,13 +1,15 @@
-import axios from 'axios'
+import engine from './assemblerEngine'
 
-const baseUrl = '/api/assembler'
+const { assembleProgram, simulateProgram } = engine
 
-const sendCode = code => {
-
-	const request = axios.post(baseUrl, {code})
-	return request.then(response => response.data)
+const compileCode = code => {
+  return Promise.resolve(assembleProgram(code))
 }
 
-const promises = {sendCode}
+const sendCode = code => {
+  return Promise.resolve(simulateProgram(code))
+}
+
+const promises = { compileCode, sendCode }
 
 export default promises

@@ -1,34 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Russo+One&family=Sarpanch:wght@800&family=Squada+One&family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=JetBrains+Mono:wght@400;700&family=Russo+One&family=Sarpanch:wght@800&family=Squada+One&family=Teko:wght@500&display=swap');
 
-*
-{
-  padding: 0;
-  margin: 0;
-  color: #FFF;
-  font-family: "Inconsolata", arial;
+:root {
+  --bg: #0f1117;
+  --bg-alt: #171b23;
+  --panel: #1e232d;
+  --panel-strong: #232a35;
+  --panel-soft: #11161d;
+  --line: rgba(255, 255, 255, 0.08);
+  --primary: #ff8f52;
+  --primary-strong: #ff6f3d;
+  --text: #edf2ff;
+  --muted: #a9b4c7;
+  --shadow: rgba(0, 0, 0, 0.28);
 }
 
-ul
-{
+* {
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+  font-family: "Inconsolata", arial;
+  box-sizing: border-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #60666b #313335;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #313335;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #60666b;
+  border: 2px solid #313335;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #7a8289;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #313335;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+}
+
+ul {
   list-style: none;
 }
 
-html
-{
-  background-color: #000;
+button,
+textarea {
+  font: inherit;
 }
 
-.App 
-{
-  padding-bottom: 2rem;
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #2b2b2b;
 }
 
-a
-{
+a {
   text-decoration: none;
 }
 
-a:hover
-{
-  text-decoration: underline;
+a:hover {
+  text-decoration: none;
 }
+

@@ -1,17 +1,55 @@
-.instruction-set
-{
-  width:15.6rem;
-  height: 100%;
-  border: 1px solid #FF4500;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color:#000;;
-  height: 100%;
-  box-sizing: border-box;
+.instruction-set {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  padding: 0;
+  overflow: hidden;
 }
 
-.instruction-syntax
-{
-  font-size: 1.3rem;
-  padding-bottom: 0.5rem;
+.instruction-set.compact {
+  height: 100%;
+}
+
+.panel-header {
+  display: none;
+}
+
+.instruction-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  overflow: auto;
+  padding: 8px;
+}
+
+.instruction-item {
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+}
+
+.instruction-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.instruction-syntax {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Inconsolata', monospace;
+}
+
+.syntax-keyword { color: #cc7832; }
+.syntax-register { color: #9876aa; }
+.syntax-number { color: #6897bb; }
+.syntax-label { color: #ffc66d; }
+
+.instruction-description {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #9da7b3;
 }

@@ -1,0 +1,146 @@
+.ide-editor {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  background: #2b2b2b;
+  overflow: hidden;
+}
+
+/* ---------- Gutter (breakpoints + line numbers) ---------- */
+
+.ide-gutter {
+  width: 64px;
+  min-width: 64px;
+  background: #313335;
+  border-right: 1px solid #323232;
+  overflow: hidden;
+  font-size: 14px;
+  user-select: none;
+}
+
+.ide-gutter-lines {
+  padding-top: 8px;
+  line-height: 1.5;
+  will-change: transform;
+}
+
+.gutter-line {
+  display: flex;
+  align-items: center;
+  height: 21px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.gutter-line:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.gutter-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #e05555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gutter-line.execution .gutter-icon {
+  color: #3592c4;
+}
+
+.gutter-number {
+  flex: 1;
+  text-align: right;
+  color: #606366;
+}
+
+.gutter-line.has-breakpoint .gutter-number {
+  color: #e05555;
+}
+
+.gutter-line.execution {
+  background: #2d6099;
+}
+
+.gutter-line.execution .gutter-number {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ---------- Highlight overlay + transparent input ---------- */
+
+.ide-editor-body {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.ide-highlight,
+.ide-input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 8px 12px;
+  border: none;
+  font-size: 14px;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  line-height: 21px;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 4;
+}
+
+.ide-highlight {
+  pointer-events: none;
+  color: #a9b7c6;
+  background: transparent;
+}
+
+.ide-highlight code {
+  display: block;
+  font: inherit;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  line-height: 21px;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.ide-input {
+  background: transparent;
+  color: transparent;
+  caret-color: #ffffff;
+  resize: none;
+  outline: none;
+}
+
+.ide-input::selection {
+  background: rgba(33, 66, 131, 0.8);
+}
+
+.ide-editor.binary-mode .ide-gutter-lines {
+  padding-top: 40px;
+  line-height: 1.5;
+}
+
+.ide-editor.binary-mode .gutter-line {
+  height: 21px;
+}
+
+.ide-editor.binary-mode .ide-highlight,
+.ide-editor.binary-mode .ide-input {
+  padding-top: 40px;
+  line-height: 21px;
+}
+
+/* ---------- Token colors (Darcula palette) ---------- */
+
+.tok-keyword { color: #cc7832; }
+.tok-register { color: #9876aa; }
+.tok-number { color: #6897bb; }
+.tok-label { color: #ffc66d; }

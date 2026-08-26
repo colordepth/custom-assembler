@@ -1,39 +1,53 @@
 import './About.css';
 import deepProfile from '../assets/deep-profile.jpg'
-import karanProfile from '../assets/karan-profile.png'
+import karanProfile from '../assets/karan-profile.jpeg'
 import dhruvProfile from '../assets/dhruv-profile.jpg'
+import { Code2, Cpu, GitBranch, Users } from 'lucide-react';
+
+const contributors = [
+  { name: 'Karan Singh', handle: 'KaranMano', image: karanProfile },
+  { name: 'Dhruv Malik', handle: 'dhruvmalik25', image: dhruvProfile },
+  { name: 'Deep Sharma', handle: 'colordepth', image: deepProfile },
+];
 
 const About = () => {
-
   return (
     <div id="about">
-      <h1 id='about-title'>Our Project</h1>
-      <p id="about-description">
-        An assembler and simulator for a custom instruction set which works in multiple stages, worked with a system that employs 2 different programming languages together
-      </p>
-      <ul id="profiles">
-        <li className='profile-card'>
-          <img className='profile-image' src={karanProfile} />
-          <div className='profile-details'  >
-            <h1 className='profile-name'>Karan Singh</h1>
-            <a className='profile-link' href='https://github.com/KaranMano'>https://github.com/KaranMano</a>
+      <div className="about-breadcrumb"><Code2 size={14} /> about.md</div>
+      <main className="about-content">
+        <section className="about-intro">
+          <div className="about-kicker">Custom ISA developer tools</div>
+          <h1 id="about-title">Assembler workspace</h1>
+          <p id="about-description">
+            Created as a college project, this browser-based assembler and simulator explores a custom instruction set through compilation, execution, and debugging.
+          </p>
+          <div className="about-meta">
+            <span><Cpu size={14} /> 16-bit instruction words</span>
+            <span><GitBranch size={14} /> Assemble and simulate</span>
+            <span><Users size={14} /> 3 contributors</span>
           </div>
-        </li>
-        <li className='profile-card'>
-          <img className='profile-image' src={dhruvProfile} />
-          <div className='profile-details' >
-            <h1 className='profile-name'>Dhruv Malik</h1>
-            <a className='profile-link' href='https://github.com/dhruvmalik25'>https://github.com/dhruvmalik25</a>
+        </section>
+
+        <section className="contributors-section">
+          <div className="section-heading">
+            <span>Contributors</span>
+            <span className="section-count">03</span>
           </div>
-        </li>
-        <li className='profile-card'>
-          <img className='profile-image' src={deepProfile} />
-          <div className='profile-details'>
-            <h1 className='profile-name'>Deep Sharma</h1>
-            <a className='profile-link' href='https://github.com/colordepth'>https://github.com/colordepth</a>
-          </div>
-        </li>
-      </ul>
+          <ul id="profiles">
+            {contributors.map((contributor) => (
+              <li className="profile-card" key={contributor.handle}>
+                <img className="profile-image" src={contributor.image} alt={`${contributor.name} profile`} />
+                <div className="profile-details">
+                  <h2 className="profile-name">{contributor.name}</h2>
+                  <a className="profile-link" href={`https://github.com/${contributor.handle}`}>
+                    github.com/{contributor.handle}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
     </div>
   );
 }

@@ -1,27 +1,315 @@
-.work-area
-{
+.ide-workspace {
   display: flex;
-  height: 35rem;
-  /* width: 100%; */
-  padding: 0rem 2rem;
-  box-sizing: border-box;
-  /*flex-wrap: wrap;*/
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #2b2b2b;
 }
 
-textarea
-{
-  font-size: 1.5rem;
-  min-width: 15.6rem;
-  background-color:#000;
-  border-radius: 1rem;
-  border-color: #FF4500;
-  height: 100%;
-  width: calc(100% - 15.6rem);
-  resize: none;
-  margin: 2rem;
-  margin-right: 0rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1rem;
+.ide-main-row {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---------- Activity bar ---------- */
+
+.ide-activity-bar {
+  width: 44px;
+  min-width: 44px;
+  background: #3c3f41;
+  border-right: 1px solid #323232;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+  gap: 4px;
+}
+
+.activity-button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #9da7b3;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.activity-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #d7dce2;
+}
+
+.activity-button.active {
+  background: rgba(53, 146, 196, 0.25);
+  color: #ffffff;
+}
+
+/* ---------- Side tool window ---------- */
+
+.ide-tool-window {
+  width: 250px;
+  min-width: 250px;
+  background: #3c3f41;
+  border-right: 1px solid #323232;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ide-tool-title {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9da7b3;
+  border-bottom: 1px solid #323232;
+}
+
+.ide-tool-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.program-stats {
+  padding: 8px 0;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #9da7b3;
+}
+
+.stat-row strong {
+  color: #d7dce2;
+}
+
+/* ---------- Editor column ---------- */
+
+.ide-editor-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.ide-breadcrumbs {
+  height: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  background: #3c3f41;
+  border-bottom: 1px solid #323232;
+  font-size: 13px;
+}
+
+.crumb {
+  color: #9da7b3;
+}
+
+.file-tab {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.file-tab:hover {
+  color: #d7dce2;
+}
+
+.binary-toggle {
+  border: 0;
+  background: transparent;
+  padding: 3px 5px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #9da7b3;
+}
+
+.binary-toggle:hover,
+.binary-toggle.active {
+  color: #6fb3e0;
+  background: rgba(53, 146, 196, 0.12);
+}
+
+.file-status {
+  color: transparent;
+}
+
+.file-tab.edited .file-status {
+  color: #d7c27d;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.crumb.execution {
+  color: #6fb3e0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.editor-and-binary {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+.editor-and-binary > .ide-editor {
+  flex: 1;
+  min-width: 0;
+}
+
+.binary-inspector {
+  width: 370px;
+  min-width: 370px;
+  display: flex;
+  flex-direction: column;
+  background: #303234;
+  border-left: 1px solid #1f2021;
+  color: #c5c8c9;
+  font-family: "JetBrains Mono", "Inconsolata", monospace;
+}
+
+.binary-inspector-title {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #d7dce2;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #45494a;
+}
+
+.binary-legend {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 6px 50px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.binary-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-top: 8px;
+}
+
+.binary-key::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border-radius: 2px;
+}
+
+.opcode-key { color: #8fc7e8; }
+.opcode-key::before { background: #4d83a2; }
+.data-key { color: #b6d68c; }
+.data-key::before { background: #698b4d; }
+.filler-key { color: #a7abb0; }
+.filler-key::before { background: #656a70; }
+
+.binary-row {
+  height: 21px;
   box-sizing: border-box;
+  padding: 0 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+  font-family: 'JetBrains Mono', 'Inconsolata', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.binary-line {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 21px;
+}
+
+.binary-address {
+  color: #606366;
+  text-align: right;
+}
+
+.binary-value {
+  display: inline-flex;
+  min-width: 0;
+  white-space: pre;
+  letter-spacing: 0.05em;
+}
+
+.binary-placeholder {
+  color: #45494a;
+}
+
+.binary-filler {
+  color: #a7abb0;
+  background: rgba(101, 106, 112, 0.18);
+}
+
+.binary-value .tok-keyword,
+.binary-value .tok-register,
+.binary-value .tok-number,
+.binary-value .tok-label {
+  font: inherit;
+  background: transparent;
+}
+
+.binary-empty {
+  padding: 18px 12px;
+  color: #6c737d;
+  font-size: 14px;
+}
+
+/* ---------- Status bar ---------- */
+
+.ide-status-bar {
+  height: 26px;
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 12px;
+  background: #3c3f41;
+  border-top: 1px solid #323232;
+  font-size: 12px;
+}
+
+.status-item {
+  color: #9da7b3;
+}
+
+.status-item.spacer {
+  flex: 1;
+}
+
+.status-item.debug-status {
+  color: #6fb3e0;
 }
