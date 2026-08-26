@@ -899,22 +899,24 @@ function simulateProgram(sourceCode) {
   };
 }
 
+function runInstructionSet(op, a, b) {
+  const registerValue = { '000': 0, '001': 0, '010': 0, '011': 0, '100': 0, '101': 0, '110': 0, '111': 0 };
+  const operations = {
+    add: () => add(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
+    sub: () => sub(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
+    mul: () => mul(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
+    div: () => div_(['010', '011'], { ...registerValue, '010': a, '011': b }),
+    cmp: () => comp(['010', '011'], { ...registerValue, '010': a, '011': b }),
+  };
+
+  return operations[op] ? operations[op]() : null;
+}
+
 const engine = {
   assembleProgram,
   simulateProgram,
-  runInstructionSet: (op, a, b) => {
-    const registerValue = { '000': 0, '001': 0, '010': 0, '011': 0, '100': 0, '101': 0, '110': 0, '111': 0 };
-    const operations = {
-      add: () => add(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
-      sub: () => sub(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
-      mul: () => mul(['100', '010', '011'], { ...registerValue, '010': a, '011': b, '100': 0 }),
-      div: () => div_(['010', '011'], { ...registerValue, '010': a, '011': b }),
-      cmp: () => comp(['010', '011'], { ...registerValue, '010': a, '011': b }),
-    };
-
-    return operations[op] ? operations[op]() : null;
-  },
+  runInstructionSet,
 };
 
-export { assembleProgram, simulateProgram };
+export { assembleProgram, simulateProgram, runInstructionSet };
 export default engine;
